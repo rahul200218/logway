@@ -1,0 +1,331 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>view  courier received</title>
+    <link rel="stylesheet" href="{% static 'css/view_courier_received.css' %}">
+    <script src="https://kit.fontawesome.com/2f4812b960.js" crossorigin="anonymous"></script>
+    <style>
+        body::-webkit-scrollbar {
+            display: none;
+          }
+        .messages-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999;
+        }
+
+        .custom-message {
+            position: relative;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid transparent;
+            border-radius: 0.25rem;
+            font-family: Georgia;
+        }
+
+        .custom-message-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+    
+        }
+
+        .custom-message-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            
+        }
+
+        .custom-message .close {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            color: inherit;
+            opacity: 0.5;
+        }
+
+        .custom-message .close:hover {
+            opacity: 1;
+        }
+        .table-container::-webkit-scrollbar {
+            display: none;
+          }
+          .table-container thead {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+          }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-head">
+            <span class="logway">
+                LogWay
+            </span>
+        </div>
+           
+            <ul class="navlist">
+                <div class="list-link">
+                    <a href="{% url 'home' %}" class="link">Home</a>
+                    <a href="{% url 'home'%}#About " class="link">About</a>
+                    <a href="{% url 'home'%}#Service" class="link">Service</a>
+                    <a href="{% url 'home'%}#Contact" class="link">Contact</a>
+                 
+                  <div class="photo">
+                    {% if request.user.profile %}
+                    <a href="{% url 'profile' %}">
+                  <img src="{{ request.user.profile.url }}" alt="no image" class="user-photo" > </a>
+                  {% else %}
+                  <a href="{% url 'profile' %}">
+                  <img src="/static/img/user1.png" alt=" " class="user-photo" href="{% url 'profile' %}"> </a>
+                  {% endif %}
+                </div>
+                </div>
+               
+            <div class="navbutton">
+                
+                <i class="fa-solid fa-bars" id="divicon"></i>
+            
+                
+            </div>
+            <div class="menu">
+                <ul class="menu-ul">
+                    <li class="menu-li"><i class="fa-solid fa-house menus" ></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-user menus"></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-briefcase menus"></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-phone menus"></i></li>
+                </ul>
+                <ul class="menu-name">
+                    <li class="menu-name-link" ><a href="{% url 'home' %}">Home</a></li>
+                    <li class="menu-name-link" > <a href="{% url 'home'%}#About">About</a> </li>
+                    <li class="menu-name-link"><a href="{% url 'home'%}#Service">Service</a></li>
+                    <li class="menu-name-link"><a href="{% url 'home'%}#Contact">Contact</a></li>
+                </ul>
+                <i class="fa-solid fa-xmark cross" id="close"></i>
+            </div>
+        
+        </nav>
+        <div class="messages-container">
+            {% for message in messages %}
+        {% if message.tags == 'success' %}
+        <div class="custom-message custom-message-success">
+            <span>{{message}}</span>
+            <button class="close" onclick="closeMessage(this)">&times;</button>
+        </div>
+        {% elif message.tags == 'error' %}
+        <div class="custom-message custom-message-danger">
+            <span>{{ message}}</span>
+            <button class="close" onclick="closeMessage(this)">&times;</button>
+        </div>
+        {% endif %}
+    {% endfor %}
+        </div>
+    </header>
+    <main class="view-courier" style="background: rgba(9, 9, 9, 0.9) url({% static '/img/view5.jpg' %});
+    background-blend-mode: darken;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;">
+        <div class="main-div">
+            <div class="main-view-page">
+                <img src="/static/img/pexels-artem-podrez-5025489.jpg" alt="" class="image-send">
+            </div>
+            <div class="view-paragraph">
+                <span class="view-sentence">
+                    The couriers displayed below are the couriers accepted by you. Please try to rach to the customer as soon as possible and upload the details such as courier image and courier price
+                    <br>
+                    <br><br><br>
+                    Make sure you dont miss any accepted courier behind and kindly reach to the destination as early as possible
+                    <br><br><br><br>
+                </span>
+            </div>
+            
+           
+        </div>
+        <div class="get-started">
+           
+            <span class="get">Get Started</span>
+            <i class="fa-sharp fa-solid fa-arrow-down"></i>
+        </div>
+       
+       
+
+        <section class="available">
+            <span class="sentence1">Aceepted Couriers</span>
+      
+        <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                    <th>ID</th>
+                  <th>Sender</th>
+                  <th>Location</th>
+                  <th>Phone Number</th>
+                  <th>Received By</th>
+                  <th>Received At</th>
+                  <th>Upload</th>
+                  <th>View Details</th>
+                  <th>Location Access</th>
+                  <th>Start Journey</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    {% for courier in couriers %}
+                    {% if courier.accepted_by == user %}
+                    <tr>
+                        <td>{{ courier.courier_id }}</td>
+                        <td>{{ courier.sender }}</td>
+                        <td>{{ courier.location }}</td>
+                        <td>{{ courier.phone_number }}</td>
+                        <td>{{ courier.accepted_by }}</td>
+                        <td>{{ courier.accepted_at }}</td>
+                    
+                        <td>
+                          <button> <a href="{% url 'upload_courier_image' courier.id %}" style="text-decoration:none">Upload</a></button> 
+                        </td>
+                        <td>
+                            <form method="POST" onsubmit="return validateForm()">
+                              {% csrf_token %}
+                              
+                              <button onClick="getLocation(event)">Location</button>
+                              <input type="hidden" name="latitude" id="latitude" required>
+        <input type="hidden" name="longitude" id="longitude" required>
+        </form></td>
+        <td>
+        <button onclick="startJourney(this)" data-latitude="{{ courier.lattitude }}" data-longitude="{{ courier.longitude }}">Start Journey</button>
+        </td>
+        <td>
+            <button><a href="{% url 'view_upload_img_s' courier.id %}" style="text-decoration:none">view details</a></button>
+        </td>
+                  
+        </tr>
+            {% endif %}
+            {% endfor %}    
+              
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+          
+       
+    </main>
+    <footer class="footer">
+        <div class="foot-page">
+            <span class="foot-log">LogWay</span>
+
+           
+                <ul class="footer-list">
+                    <li class="foot-link"><a href="{% url 'home'%}#Service"> Service</a> </li>
+                        <li class="foot-link"><a href="{% url 'home'%}#Contact" > Contact</a> </li>
+                        <li class="foot-link"><a href="{% url 'home'%}#About" > About</a> </li>
+                </ul>
+                <div class="foot-icon">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-facebook"></i>
+                   
+            </div>
+            <div class="copy-right">
+                <p class="foot-copy">&copy;  LogWay. All right reserved</p>
+            </div>
+            <div class="foot-up" >
+                <a href="#top">    <i class="fa-sharp fa-solid fa-arrow-up"></i> </a>
+         
+            </div>
+        </div>
+
+   </footer>
+
+</body>
+<script>
+    
+       document.getElementById("divicon").addEventListener('click',displaymenu);
+function displaymenu()
+{
+    var a=document.getElementsByClassName('menu');
+    a[0].style.height = "150px";
+    a[0].style.boxShadow="rgba(0,0,0,0.45) 25px 25px 25px 25px";
+
+}
+
+document.getElementById("close").addEventListener('click',closemenu);
+function closemenu()
+{
+    var a=document.getElementsByClassName('menu');
+    a[0].style.height = "0px";
+    a[0].style.boxShadow="rgba(0,0,0,0.45) 0px 0px 0px 0px";
+}
+
+let buttonClicked = false;
+
+function getLocation(event) {
+    event.preventDefault();
+    buttonClicked = true;
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else { 
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+
+function showPosition(position) {
+    let latitude = document.getElementById('latitude');
+    let longitude = document.getElementById('longitude');
+    latitude.value = position.coords.latitude;
+    longitude.value = position.coords.longitude;
+    console.log(latitude.value, longitude.value);
+}
+
+function showError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            alert("User denied the request for Geolocation.");
+            break;
+        case error.POSITION_UNAVAILABLE:
+            alert("Location information is unavailable.");
+            break;
+        case error.TIMEOUT:
+            alert("The request to get user location timed out.");
+            break;
+        case error.UNKNOWN_ERROR:
+            alert("An unknown error occurred.");
+            break;
+    }
+}
+
+function validateForm() {
+    if (!buttonClicked) {
+        alert("Please click the 'Current Location' button before submitting the form.");
+        return false; // Prevent form submission
+    }
+    return true; // Allow form submission
+}
+
+function startJourney(button) {
+    var startLat = document.getElementById('latitude').value;
+    var startLng = document.getElementById('longitude').value;
+    var destLat = button.getAttribute('data-latitude');
+    var destLng = button.getAttribute('data-longitude');
+    console.log(startLat, startLng, destLat, destLng);
+
+    var url = "https://www.google.com/maps/dir/?api=1&origin=" + startLat + "," + startLng + "&destination=" + destLat + "," + destLng + "&travelmode=driving";
+
+    window.open(url, '_blank');
+}
+function closeMessage(element) {
+    var message = element.parentNode;
+    message.parentNode.removeChild(message);
+}
+</script>
+</html>

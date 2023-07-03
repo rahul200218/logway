@@ -1,0 +1,180 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>view courier sent</title>
+    <link rel="stylesheet" href="{% static 'css/view_courier_sent.css' %}">
+    <script src="https://kit.fontawesome.com/2f4812b960.js" crossorigin="anonymous"></script>
+    <style>
+        body::-webkit-scrollbar {
+            display: none;
+          }
+        .table-container::-webkit-scrollbar {
+            display: none;
+          }
+          .table-container thead {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+          }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-head">
+            <span class="logway">
+                LogWay
+            </span>
+        </div>
+           
+            <ul class="navlist">
+                <div class="list-link">
+                    <a href="{% url 'home' %}" class="link">Home</a>
+                    <a href="{% url 'home'%}#About " class="link">About</a>
+                    <a href="{% url 'home'%}#Service" class="link">Service</a>
+                    <a href="{% url 'home'%}#Contact" class="link">Contact</a>
+               
+                  <div class="photo">
+                    {% if request.user.profile %}
+                    <a href="{% url 'profile' %}">
+                  <img src="{{ request.user.profile.url }}" alt="no image" class="user-photo" > </a>
+                  {% else %}
+                  <a href="{% url 'profile' %}">
+                  <img src="/static/img/user1.png" alt=" " class="user-photo" href="{% url 'profile' %}"> </a>
+                  {% endif %}
+                </div>
+                </div>
+               
+            <div class="navbutton">
+                
+                <i class="fa-solid fa-bars" id="divicon"></i>
+            
+                
+            </div>
+            <div class="menu">
+                <ul class="menu-ul">
+                    <li class="menu-li"><i class="fa-solid fa-house menus" ></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-user menus"></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-briefcase menus"></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-phone menus"></i></li>
+                </ul>
+                <ul class="menu-name">
+                    <li class="menu-name-link" ><a href="{% url 'home' %}">Home</a></li>
+                    <li class="menu-name-link" > <a href="{% url 'home'%}#About">About</a> </li>
+                    <li class="menu-name-link"><a href="{% url 'home'%}#Service">Service</a></li>
+                    <li class="menu-name-link"><a href="{% url 'home'%}#Contact">Contact</a></li>
+                </ul>
+                <i class="fa-solid fa-xmark cross" id="close"></i>
+            </div>
+        
+        </nav>
+    </header>
+    <main class="view-courier" style="background: rgba(9, 9, 9, 0.9) url({% static '/img/view5.jpg' %});
+    background-blend-mode: darken;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;">
+        <div class="main-div">
+            <div class="main-view-page">
+                <img src="/static/img/My project (5).png" alt="" class="image-send">
+            </div>
+            <div class="view-paragraph">
+                <span class="view-sentence">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima ipsa eius optio consequuntur, praesentium laborum ex ducimus dicta vel ad?Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores qui voluptates quis aspernatur doloremque necessitatibus sint magnam et, neque quos similique velit iusto soluta asperiores iste nostrum totam nihil sed ut, blanditiis illum sequi perspiciatis! Possimus voluptatem eum libero debitis.
+                    <br>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim magni eligendi officiis, doloremque molestiae autem odio nulla, quisquam ducimus nesciunt facere soluta aperiam sint corporis quaerat corrupti aut, perferendis et!
+                </span>
+            </div>
+            
+           
+        </div>
+        <div class="get-started">
+           
+            <span class="get">Get Started</span>
+            <i class="fa-sharp fa-solid fa-arrow-down"></i>
+        </div>
+       
+
+        <section class="available">
+            <span class="sentence1">Complaints</span>
+      
+        <div class="table-container">
+            <table>
+              <thead>
+                <tr >
+                <th>Courier id</th>
+                <th>Issue</th>
+                <th>Sent by</th>
+                <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+            {% for c in complaint %}
+            <td>{{c.complaint_by }}</td>
+            <td>{{ c.error_courier_id }}</td>
+            <td>{{ c.issue }}</td>
+            <td>{{ c.description }}</td>
+           
+                </tr>
+                </tbody>
+             
+                {% endfor %}
+            </table>
+          </div>
+        </section>   
+    </main>
+    <footer class="footer">
+        <div class="foot-page">
+            <span class="foot-log">LogWay</span>
+
+           
+            <ul class="footer-list">
+                <li class="foot-link"><a href="{% url 'home'%}#Service"> Service</a> </li>
+                <li class="foot-link"><a href="{% url 'home'%}#Contact" > Contact</a> </li>
+                <li class="foot-link"><a href="{% url 'home'%}#About" > About</a> </li>
+            </ul>
+                <div class="foot-icon">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-facebook"></i>
+                   
+            </div>
+            <div class="copy-right">
+                <p class="foot-copy">&copy;  LogWay. All right reserved</p>
+            </div>
+            <div class="foot-up" >
+                <a href="#top">    <i class="fa-sharp fa-solid fa-arrow-up"></i> </a>
+         
+            </div>
+        </div>
+
+   </footer>
+
+</body>
+<script>
+   
+document.getElementById("divicon").addEventListener('click',displaymenu);
+function displaymenu()
+{
+    var a=document.getElementsByClassName('menu');
+    a[0].style.height = "150px";
+    a[0].style.boxShadow="rgba(0,0,0,0.45) 25px 25px 25px 25px";
+
+}
+
+document.getElementById("close").addEventListener('click',closemenu);
+function closemenu()
+{
+    var a=document.getElementsByClassName('menu');
+    a[0].style.height = "0px";
+    a[0].style.boxShadow="rgba(0,0,0,0.45) 0px 0px 0px 0px";
+}
+
+
+</script>
+</html>

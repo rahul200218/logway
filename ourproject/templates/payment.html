@@ -1,0 +1,264 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/2f4812b960.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/send_courier.css' %}">
+    <title>Send courier</title>
+</head>
+
+
+<style>
+    .messages-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 9999;
+    }
+
+    .custom-message {
+        position: relative;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+        font-family: Georgia;
+    }
+
+    .custom-message-success {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+
+    }
+
+    .custom-message-danger {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+        
+    }
+
+    .custom-message .close {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        color: inherit;
+        opacity: 0.5;
+    }
+
+    .custom-message .close:hover {
+        opacity: 1;
+    }
+</style>
+<body>
+   
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-head">
+            <span class="logway">
+                LogWay
+            </span>
+              </div>
+           
+            <ul class="navlist">
+                <header class="list-link">
+                <a href="{% url 'home' %}" class="link">Home</a>
+                <a href="{% url 'home'%}#About " class="link">About</a>
+                <a href="{% url 'home'%}#Service" class="link">Service</a>
+                <a href="{% url 'home'%}#Contact" class="link">Contact</a>
+                
+                  <div class="photo">
+                    {% if request.user.profile %}
+                    <a href="{% url 'profile' %}">
+                  <img src="{{ request.user.profile.url }}" alt="no image" class="user-photo" > </a>
+                  {% else %}
+                  <a href="{% url 'profile' %}">
+                  <img src="/static/img/user1.png" alt=" " class="user-photo" href="{% url 'profile' %}"> </a>
+                  {% endif %} 
+                </div>
+                </header>
+               
+            <div class="navbutton">
+                
+                <i class="fa-solid fa-bars" id="divicon"></i>
+            
+                
+            </div>
+            <div class="menu">
+                <ul class="menu-ul">
+                    <li class="menu-li"><i class="fa-solid fa-house menus" ></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-user menus"></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-briefcase menus"></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-phone menus"></i></li>
+                </ul>
+                <ul class="menu-name">
+                    <li class="menu-name-link" ><a href="{% url 'home' %}">Home</a></li>
+                    <li class="menu-name-link" > <a href="{% url 'home'%}#About">About</a> </li>
+                    <li class="menu-name-link"><a href="{% url 'home'%}#Service">Service</a></li>
+                    <li class="menu-name-link"><a href="{% url 'home'%}#Contact">Contact</a></li>
+                </ul>
+                <i class="fa-solid fa-xmark cross" id="close"></i>
+            </div>
+        
+        </nav>
+        
+ <div class="messages-container">
+    {% for message in messages %}
+{% if message.tags == 'success' %}
+<div class="custom-message custom-message-success">
+    <span>{{message}}</span>
+    <button class="close" onclick="closeMessage(this)">&times;</button>
+</div>
+{% elif message.tags == 'error' %}
+<div class="custom-message custom-message-danger">
+    <span>{{ message}}</span>
+    <button class="close" onclick="closeMessage(this)">&times;</button>
+</div>
+{% endif %}
+{% endfor %}
+</div>
+
+    </header>
+  
+
+        <main class="main">
+            <section class="home">
+                {% comment %} <div class="slider-wrapper">
+                    <div class="slider">
+                      
+                        <div class="slides">
+                            <input type="radio" name="radio-btn" id="radio1">
+                            <input type="radio" name="radio-btn" id="radio2">
+                            <input type="radio" name="radio-btn" id="radio3">
+                            <input type="radio" name="radio-btn" id="radio4">
+                            <div class="slide first">
+                                <img src="/static/img/send_courier2.jpeg" alt="" class="slide-image" height="300px" width="300px">
+                                
+                            </div>
+                            <div class="slide">
+                                <img src="/static/img/send_courier3.jpeg" alt="" class="slide-image" height="300px" width="300px">
+                            </div>
+                            <div class="slide">
+                                <img src="/static/img/send_courier1.jpeg" alt="" class="slide-image"height="300px" width="300px">
+                            </div>
+                            <div class="slide">
+                                <img src="/static/img/send_courier4.jpeg" alt="" class="slide-image" height="300px" width="300px">
+                            </div>
+                            <div class="navigation-auto">
+                                <div class="auto-btn1"></div>
+                                <div class="auto-btn2"></div>
+                                <div class="auto-btn3"></div>
+                                <div class="auto-btn4"></div>
+                            </div>
+                          
+                        </div>
+                        <div class="navigation-manual">
+                            <label for="radio1" class="manual-btn"></label>
+                            <label for="radio2" class="manual-btn"></label>
+                            <label for="radio3" class="manual-btn"></label>
+                            <label for="radio4" class="manual-btn"></label>
+                        </div>
+                 
+                    </div>
+                </div> {% endcomment %}
+                <div class="home-send">
+                    <p class="send-paragraph">
+                        You have confirmed the details in the previous page and aware of the price uploaded by staff.
+                        <br><br>
+                        Only click on Pay if confirmed.
+                       
+                    </p>
+
+                </div>
+                <div class="scroll">
+                    <p class="get"><button id="rzp-button1" style="background-color:green;color:white;width:100px;
+                        height:50px;border:none;border-radius:12px;">Pay</button></p>
+                    {% comment %} <i class="fa-sharp fa-solid fa-arrow-down"></i> {% endcomment %}
+             
+            </div>
+           
+
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="foot-page">
+                <span class="foot-log">LogWay</span>
+
+               
+                    <ul class="footer-list">
+                        <li class="foot-link"><a href="{% url 'home'%}#Service"> Service</a> </li>
+                        <li class="foot-link"><a href="{% url 'home'%}#Contact" > Contact</a> </li>
+                        <li class="foot-link"><a href="{% url 'home'%}#About" > About</a> </li>
+                    </ul>
+                    <div class="foot-icon">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-facebook"></i>
+                       
+                </div>
+                <div class="copy-right">
+                    <p class="foot-copy">&copy;  LogWay. All right reserved</p>
+                </div>
+                <div class="foot-up" >
+                    <a href="#top">    <i class="fa-sharp fa-solid fa-arrow-up"></i> </a>
+             
+                </div>
+            </div>
+
+       </footer>
+    
+    
+
+
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    {% block script %}
+var options = {
+    "id1":"{{ id1 }}",
+    "key": "{{ api_key }}",
+    "amount": "{{ amount }}",
+    "name": "Logway",
+    "description": "Till your destiny",
+    "image": "/static/img/logo2.jpg",
+    "order_id": "{{ order_id }}", 
+    "callback_url": "http://127.0.0.1:8000/thankyou/{{ id1 }}",
+    "prefill": { 
+        "name": "{{ request.user.username }}",
+        "email": "{{ request.user.email }}",
+        "contact": "{{ ph }}"
+    },
+    "notes": {
+        "address": "Kundapura"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 = new Razorpay(options);
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+rzp1.on('payment.failed', function(response) {
+    window.location.href = "https://chat.openai.com/";
+});
+
+rzp1.on('payment.cancelled', function(response) {
+    window.location.href = "https://chat.openai.com/";
+});
+console.log("{{amount}}")
+console.log('{{id1}}')
+
+
+
+
+{% endblock script %}
+</script>
+</body>
+</html>

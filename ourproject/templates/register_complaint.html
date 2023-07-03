@@ -1,0 +1,233 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/register_complaint.css' %}">
+    <script src="https://kit.fontawesome.com/2f4812b960.js" crossorigin="anonymous"></script>
+    <title>register-complain</title>
+    <style>
+        body::-webkit-scrollbar {
+            display: none;
+          }
+        .messages-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999;
+        }
+
+        .custom-message {
+            position: relative;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid transparent;
+            border-radius: 0.25rem;
+            font-family: Georgia;
+        }
+
+        .custom-message-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+    
+        }
+
+        .custom-message-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            
+        }
+
+        .custom-message .close {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            color: inherit;
+            opacity: 0.5;
+        }
+
+        .custom-message .close:hover {
+            opacity: 1;
+        }
+    </style>
+
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-head">
+            <span class="logway">
+                LogWay
+            </span>
+        </div>
+           
+            <ul class="navlist">
+                <div class="list-link">
+                    <a href="{% url 'home' %}" class="link">Home</a>
+                    <a href="{% url 'home'%}#About " class="link">About</a>
+                    <a href="{% url 'home'%}#Service" class="link">Service</a>
+                    <a href="{% url 'home'%}#Contact" class="link">Contact</a>
+                    
+                  <div class="photo">
+                    {% if request.user.profile %}
+                    <a href="{% url 'profile' %}">
+                  <img src="{{ request.user.profile.url }}" alt="no image" class="user-photo" > </a>
+                  {% else %}
+                  <a href="{% url 'profile' %}">
+                  <img src="/static/img/user1.png" alt=" " class="user-photo" href="{% url 'profile' %}"> </a>
+                  {% endif %}  
+                </div>
+                </div>
+               
+            <div class="navbutton">
+                
+                <i class="fa-solid fa-bars" id="divicon"></i>
+            
+                
+            </div>
+            <div class="menu">
+                <ul class="menu-ul">
+                    <li class="menu-li"><i class="fa-solid fa-house menus" ></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-user menus"></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-briefcase menus"></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-phone menus"></i></li>
+                </ul>
+                <ul class="menu-name">
+                    <li class="menu-name-link" ><a href="{% url 'home' %}">Home</a></li>
+                    <li class="menu-name-link" > <a href="{% url 'home'%}#About">About</a> </li>
+                    <li class="menu-name-link"><a href="{% url 'home'%}#Service">Service</a></li>
+                    <li class="menu-name-link"><a href="{% url 'home'%}#Contact">Contact</a></li>
+                </ul>
+                <i class="fa-solid fa-xmark cross" id="close"></i>
+            </div>
+        
+        </nav>
+        
+ <div class="messages-container">
+    {% for message in messages %}
+{% if message.tags == 'success' %}
+<div class="custom-message custom-message-success">
+    <span>{{message}}</span>
+    <button class="close" onclick="closeMessage(this)">&times;</button>
+</div>
+{% elif message.tags == 'error' %}
+<div class="custom-message custom-message-danger">
+    <span>{{ message}}</span>
+    <button class="close" onclick="closeMessage(this)">&times;</button>
+</div>
+{% endif %}
+{% endfor %}
+</div>
+
+
+
+    </header>
+
+    <main class="register-complain" style=" background:rgba(9, 9, 9, 0.8) url({% static 'img/complaint.webp' %});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment:fixed;
+    background-blend-mode: darken;
+    color: white;">
+        <div class="main-div">
+            <div class="main-page">
+                <img src="/static/img/registercomplaint.jpg" alt="" class="image-send" >
+            </div>
+            <div class="view-paragraph">
+                <span class="view-sentence">
+                    Our all-encompassing and meticulously designed platform not only offers seamless access to vital courier information but also goes the extra mile by providing a streamlined and user-friendly avenue for customers to register complaints, ensuring a hassle-free experience throughout the entire process. 
+                    <br>
+                    With a plethora of support channels available, including online forms, dedicated helplines, and responsive email communication, our robust complaint registration system empowers customers to voice their concerns, allowing our diligent support team to promptly investigate and resolve any issues, thereby cementing our commitment to delivering exceptional service and fostering long-lasting customer satisfaction, all while upholding the highest standards of professionalism and efficiency.
+                </span>
+            </div>
+            
+           
+        </div>
+        <div class="get-started">
+           
+            <span class="get">Get Started</span>
+            <i class="fa-sharp fa-solid fa-arrow-down"></i>
+        </div>
+       
+       
+
+        <section class="complain">
+            <span class="sentence1">Lodge Complaint</span>
+      
+            <form action="" class="complaint-box" method="POST">
+                {% csrf_token %}
+                <label for="id">Enter courier id</label>
+                <input type="text" name="id" id="id">
+                <br>
+                <label for="issue" id="issue">Select issue</label>
+                <select name="issue" id="issue">
+                    <option style="display: none;"></option>
+                    <option value="Sending">Sending</option>
+                    <option value="Receiving">Receiving</option>
+                </select>
+                <br>
+                <label for="problem"  class="prob1">Enter problem</label>
+                <textarea name="problem" id="problem" cols="40" rows="5"></textarea>
+                <br>
+                <input type="submit" id="sub" value="Submit">
+            </form>
+       
+          
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="foot-page">
+            <span class="foot-log">LogWay</span>
+
+           
+                <ul class="footer-list">
+                    <li class="foot-link"><a href="{% url 'home'%}#Service"> Service</a> </li>
+                    <li class="foot-link"><a href="{% url 'home'%}#Contact" > Contact</a> </li>
+                    <li class="foot-link"><a href="{% url 'home'%}#About" > About</a> </li>
+                </ul>
+                <div class="foot-icon">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-facebook"></i>
+                   
+            </div>
+            <div class="copy-right">
+                <p class="foot-copy">&copy;  LogWay. All right reserved</p>
+            </div>
+            <div class="foot-up" >
+                <a href="#Home">    <i class="fa-sharp fa-solid fa-arrow-up"></i> </a>
+         
+            </div>
+        </div>
+
+   </footer>
+</body>
+<script>
+  
+       document.getElementById("divicon").addEventListener('click',displaymenu);
+function displaymenu()
+{
+    var a=document.getElementsByClassName('menu');
+    a[0].style.height = "150px";
+    a[0].style.boxShadow="rgba(0,0,0,0.45) 25px 25px 25px 25px";
+
+}
+
+document.getElementById("close").addEventListener('click',closemenu);
+function closemenu()
+{
+    var a=document.getElementsByClassName('menu');
+    a[0].style.height = "0px";
+    a[0].style.boxShadow="rgba(0,0,0,0.45) 0px 0px 0px 0px";
+}
+function closeMessage(element) {
+    var message = element.parentNode;
+    message.parentNode.removeChild(message);
+}
+
+</script>
+</html>

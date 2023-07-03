@@ -1,0 +1,350 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/2f4812b960.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/send_courier.css' %}">
+    <title>Send courier</title>
+</head>
+
+
+<style>
+    body::-webkit-scrollbar {
+        display: none;
+      }
+    .messages-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 9999;
+    }
+
+    .custom-message {
+        position: relative;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+        font-family: Georgia;
+    }
+
+    .custom-message-success {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+
+    }
+
+    .custom-message-danger {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+        
+    }
+
+    .custom-message .close {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        color: inherit;
+        opacity: 0.5;
+    }
+
+    .custom-message .close:hover {
+        opacity: 1;
+    }
+</style>
+<body>
+   
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-head">
+            <span class="logway">
+                LogWay
+            </span>
+              </div>
+           
+            <ul class="navlist">
+                <header class="list-link">
+                <a href="{% url 'home' %}" class="link">Home</a>
+                <a href="{% url 'home'%}#About" class="link">About</a>
+                <a href="{% url 'home'%}#Service" class="link">Service</a>
+                <a href="{% url 'home'%}#Contact" class="link">Contact</a>
+                
+                  <div class="photo">
+                    {% if request.user.profile %}
+                    <a href="{% url 'profile' %}">
+                  <img src="{{ request.user.profile.url }}" alt="no image" class="user-photo" > </a>
+                  {% else %}
+                  <a href="{% url 'profile' %}">
+                  <img src="/static/img/user1.png" alt=" " class="user-photo" href="{% url 'profile' %}"> </a>
+                  {% endif %} 
+                </div>
+                </header>
+               
+            <div class="navbutton">
+                
+                <i class="fa-solid fa-bars" id="divicon"></i>
+            
+                
+            </div>
+            <div class="menu">
+                <ul class="menu-ul">
+                    <li class="menu-li"><i class="fa-solid fa-house menus" ></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-user menus"></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-briefcase menus"></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-phone menus"></i></li>
+                </ul>
+                <ul class="menu-name">
+                    <li class="menu-name-link" ><a href="{% url 'home' %}">Home</a></li>
+                    <li class="menu-name-link" > <a href="{% url 'home'%}#About">About</a> </li>
+                    <li class="menu-name-link"><a href="{% url 'home'%}#Service">Service</a></li>
+                    <li class="menu-name-link"><a href="{% url 'home'%}#Contact">Contact</a></li>
+                </ul>
+                <i class="fa-solid fa-xmark cross" id="close"></i>
+            </div>
+        
+        </nav>
+        
+ <div class="messages-container">
+    {% for message in messages %}
+{% if message.tags == 'success' %}
+<div class="custom-message custom-message-success">
+    <span>{{message}}</span>
+    <button class="close" onclick="closeMessage(this)">&times;</button>
+</div>
+{% elif message.tags == 'error' %}
+<div class="custom-message custom-message-danger">
+    <span>{{ message}}</span>
+    <button class="close" onclick="closeMessage(this)">&times;</button>
+</div>
+{% endif %}
+{% endfor %}
+</div>
+
+    </header>
+  
+
+        <main class="main">
+            <section class="home">
+                <div class="slider-wrapper">
+                    <div class="slider">
+                      
+                        <div class="slides">
+                            <input type="radio" name="radio-btn" id="radio1">
+                            <input type="radio" name="radio-btn" id="radio2">
+                            <input type="radio" name="radio-btn" id="radio3">
+                            <input type="radio" name="radio-btn" id="radio4">
+                            <div class="slide first">
+                                <img src="/static/img/send_courier2.jpeg" alt="" class="slide-image" height="300px" width="300px">
+                                
+                            </div>
+                            <div class="slide">
+                                <img src="/static/img/send_courier3.jpeg" alt="" class="slide-image" height="300px" width="300px">
+                            </div>
+                            <div class="slide">
+                                <img src="/static/img/send_courier1.jpeg" alt="" class="slide-image"height="300px" width="300px">
+                            </div>
+                            <div class="slide">
+                                <img src="/static/img/send_courier4.jpeg" alt="" class="slide-image" height="300px" width="300px">
+                            </div>
+                            <div class="navigation-auto">
+                                <div class="auto-btn1"></div>
+                                <div class="auto-btn2"></div>
+                                <div class="auto-btn3"></div>
+                                <div class="auto-btn4"></div>
+                            </div>
+                          
+                        </div>
+                        <div class="navigation-manual">
+                            <label for="radio1" class="manual-btn"></label>
+                            <label for="radio2" class="manual-btn"></label>
+                            <label for="radio3" class="manual-btn"></label>
+                            <label for="radio4" class="manual-btn"></label>
+                        </div>
+                 
+                    </div>
+                </div>
+                <div class="home-send">
+                    <p class="send-paragraph">
+                        Our platform simplifies the process, allowing you to send couriers in no time. With just a few clicks, you can enter the shipment details, choose the delivery options, and schedule a pickup or drop-off, all from the comfort of your own device.
+                        <br>
+                        You can easily track the progress of your courier in real-time, receiving updates and notifications at every stage. From the moment you initiate the delivery until it reaches its destination, you can stay informed and have peace of mind knowing exactly where your package is.
+                    </p>
+                </div>
+                <div class="scroll">
+                    <p class="get">Get Started</p>
+                    <i class="fa-sharp fa-solid fa-arrow-down"></i>
+             
+            </div>
+            <p class="send-start"id="top">Send Courier</p>
+            <form action="" class="send-form box" method="POST" onsubmit="return validateForm()">
+              {% csrf_token %}
+                
+                <label for="select" >Select region</label>
+               <select name="place" id="select" required>
+                <option value="" disabled selected>Select region</option>
+               <option value="kundapura">Kundapura</option>
+               <option value="byndoor">Byndoor</option>
+               <option value="shiroor">shiroor</option>
+               <option value="tallur">tallur</option>
+               </select>
+               
+               <br>
+              
+               <label for="cno" id="cono">Enter contact number</label>
+               <input type="tel" name="cno" id="cno" pattern="[0-9]{10}" required placeholder="enter phone number">
+               <br>
+
+               <label for="select" id="des" class="des" >Destination Region</label>
+               <select name="dplace" id="select1" class="select1" required >
+                <option style="display: none;"></option>
+               <option value="banglore">Banglore</option>
+               <option value="mysore">Mysore</option>
+               <option value="dharwad">Dharwad</option>
+               <option value="bidar">Bidar</option>
+               </select>
+               <br>
+               <label for="add" class="add" >Destination Address with Phonenumber</label>
+               <textarea name="add" id="add" cols="27" rows="3" style="margin-left: 70px;margin-top: 50px;"></textarea>
+               <br>
+               <input type="hidden" name="lattitude" id="lattitude" required>
+               <input type="hidden" name="longitude" id="longitude" required>
+               <input type="button" id="sub" value="Give location" onClick="getLocation(event)">
+              
+               <input type="submit" id="sub" value="Submit">
+            </form>
+
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="foot-page">
+                <span class="foot-log">LogWay</span>
+
+               
+                    <ul class="footer-list">
+                        <li class="foot-link"><a href="{% url 'home'%}#Service"> Service</a> </li>
+                        <li class="foot-link"><a href="{% url 'home'%}#Contact" > Contact</a> </li>
+                        <li class="foot-link"><a href="{% url 'home'%}#About" > About</a> </li>
+                    </ul>
+                    <div class="foot-icon">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-facebook"></i>
+                       
+                </div>
+                <div class="copy-right">
+                    <p class="foot-copy">&copy;  LogWay. All right reserved</p>
+                </div>
+                <div class="foot-up" >
+                    <a href="#top">    <i class="fa-sharp fa-solid fa-arrow-up"></i> </a>
+             
+                </div>
+            </div>
+
+       </footer>
+    
+
+    <script>
+        
+
+        // curosal
+        var counter=1;
+    setInterval(function(){
+        document.getElementById('radio'+ counter).checked=true;
+        counter++;
+        if (counter>4){
+            counter=1;
+        }
+    },5000);
+
+
+    const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+  entry.target.classList.add('is-visible');
+} else {
+  entry.target.classList.remove('is-visible');
+}
+});
+});
+
+document.querySelectorAll('.box').forEach(box => {
+observer.observe(box);
+});
+
+
+document.getElementById("divicon").addEventListener('click',displaymenu);
+function displaymenu()
+{
+    var a=document.getElementsByClassName('menu');
+    a[0].style.height = "150px";
+    a[0].style.boxShadow="rgba(0,0,0,0.45) 25px 25px 25px 25px";
+
+}
+
+document.getElementById("close").addEventListener('click',closemenu);
+function closemenu()
+{
+    var a=document.getElementsByClassName('menu');
+    a[0].style.height = "0px";
+    a[0].style.boxShadow="rgba(0,0,0,0.45) 0px 0px 0px 0px";
+}
+
+let buttonClicked = false;
+
+        function getLocation(event) {
+            event.preventDefault();
+            buttonClicked = true;
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else { 
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+            let latitude = document.getElementById('lattitude');
+            let longitude = document.getElementById('longitude');
+            latitude.value = position.coords.latitude;
+            longitude.value = position.coords.longitude;
+            
+        }
+
+        function showError(error) {
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    alert("User denied the request for Geolocation.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("Location information is unavailable.");
+                    break;
+                case error.TIMEOUT:
+                    alert("The request to get user location timed out.");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    alert("An unknown error occurred.");
+                    break;
+            }
+        }
+
+        function validateForm() {
+            if (!buttonClicked) {
+                alert("Please click the 'Current Location' button before submitting the form.");
+                return false;
+            }
+            return true; 
+        }
+        function closeMessage(element) {
+            var message = element.parentNode;
+            message.parentNode.removeChild(message);
+        }
+
+    </script>
+
+</body>
+</html>

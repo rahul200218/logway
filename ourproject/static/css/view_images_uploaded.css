@@ -1,0 +1,703 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+* {
+  font-family: "Raleway", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  
+   
+ } 
+ i{
+    cursor: pointer;
+ }
+ body{
+    background-color: rgba(161, 106, 161, 0.26);
+}
+/* CSS for screens with a width above 900px */
+@media screen and (min-width: 901px) 
+{
+    html{
+        scroll-behavior: smooth;
+    }
+    header :hover{
+        background-color: white;
+        color: black;
+        padding: 2px;
+        border-radius: 5px;  
+    }
+
+    .header{
+        height: 67px;
+        width: 100%;
+        position: fixed; 
+        top: 0px;
+        padding-bottom: 10px;
+        background-color: #242424;  
+        padding-top: 25px;
+        z-index: 2;
+        
+
+    }
+    .link{
+    text-decoration: none;   
+    color:white;
+    margin-left: 74px; 
+    }
+    .list-link{
+        margin-left: 187px;
+    }
+    .list-link i{
+         position: absolute;
+        margin-left: 80px;
+    }
+    .navbar{
+        font-weight: bolder;
+        display: flex;
+        font-size: 21px;
+        margin-left: 270px;
+         z-index:1;
+        color:white;
+    }
+    
+   
+    .logway{
+        margin-left: -150px;
+    }
+    .navbutton{
+        margin-top: -28px;
+        margin-left: 537px;
+        text-indent: 43px;
+        font-size: 21px;
+    }
+    .fa-moon{
+        visibility: hidden;
+        margin-left: 30pxpx;
+        font-size: 21px;
+    }
+    .fa-bars{
+        visibility: hidden;
+        
+    }
+    .user-photo{
+        position: absolute;
+        width: 30;
+        height: 30;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    .photo img{
+        margin-top: -30px;
+        margin-left: 740px;
+    
+    }
+    .menu{
+        visibility: hidden;
+    }
+    .main-class{
+        height: 500px;
+       
+    }
+    .image-div img{
+        height: 300px;
+        width: 300px;
+        margin-left: 70px;
+        margin-top: 40px;
+    }
+   
+    .image-div{
+        width: 450px;
+        background-color: black;
+        margin-top: -40px;
+       height: 410px;
+       margin-left: -50px;
+    }
+    h2{
+        color:white;
+        margin-top: 25px;
+        margin-left: 150px;
+    }
+    tr td{
+        color: black;
+        font-size: 25px;  
+    }
+     td{
+        padding-left: 27px;
+    } 
+   .details{
+  
+    display: flex;
+    background-color: white;
+    border-radius: 12px;
+    margin-top: 150px;
+    width: 1000px;
+    margin-left: 180px;
+    padding: 20px;
+    height: 370px;
+    box-shadow: 10px 10px 25px rgb(67, 67, 67);
+   }
+   table{
+        margin-left: 50px;
+        margin-top: 20px;
+        padding: 10px;
+   }
+   .disp{
+    visibility: hidden;
+   }
+   .vis{
+    Visibility: visible;
+   }
+   .btn{
+   height: 30px;
+    width: 170px;
+    border-radius: 320px;
+    border: none;
+    color: white;
+    box-shadow: 10px 10px 15px gray;
+    background-image: linear-gradient(to right, #8c19f0, #4a00e0);
+  
+   }
+   .btn-img{
+    height: 25px;
+    width: 25px;
+    margin-top: -5px;
+    position: absolute;
+    margin-left: 10px;
+   }
+   .foot-page{
+    height: 220px; 
+    background-color: #242424; 
+   }
+   
+   .foot-log{
+    position: absolute;
+    color: white;
+    font-size: 33px;
+    font-weight: bolder;
+    margin-left: 250px;
+    margin-top: 50px;
+
+   }
+   .foot-link{
+    margin-left: 40px;
+    margin-top: 60px;
+   
+   }
+   .footer-list{
+    font-weight: bold;
+    display: flex;
+    margin-left: 500px;
+    list-style: none;
+  
+   }
+   .foot-link a{
+    font-weight: bolde;
+    color: white;
+    text-decoration: none;
+    font-size: larger;
+   }
+   .foot-icon{
+    margin-left: 900px;
+    margin-top: -20px;
+   }
+   .foot-icon i{
+    margin-left: 40px;
+    color: white;
+    font-size: 22px;
+   }
+   .foot-copy{
+    color: white;
+    font-size: 13px;
+   }
+   .copy-right{
+    margin-left: 600px;
+    margin-top: 70px;
+   }
+   .foot-up{
+    margin-left: 1200px;
+    margin-top: -30px;
+   }
+   .foot-up i{
+    color: white;
+    font-size:27px
+   }  
+}
+
+/*SCREEN WIDTH FOR TABLET*/
+@media screen  and (min-width: 601px) and (max-width:900px)
+{
+    html{
+        scroll-behavior: smooth;
+    }
+
+    .header{
+        height: 67px;
+        width: 100%;
+        position: fixed;
+        padding-bottom: 10px;
+       margin-top: -150px;
+          background-color: #242424;  
+        
+        z-index: 2;
+        
+    
+    }
+    
+   
+    .link{
+    text-decoration: none;   
+    color:white;
+     margin-left: 45px; 
+
+    }
+    .list-link{
+        margin-left: 10px;
+       
+    }
+   .list-link i{
+    position: absolute;
+    
+        margin-left: 50px;
+    }
+    .navbar{
+        font-weight: bolder;
+        display: flex;
+        font-size: 21px;
+        margin-left: 230px;
+        margin-top: 25px;
+        z-index:1;
+        color:white;
+        height: 20px;
+        
+    }
+   
+    .menu{
+        visibility: hidden;
+    }
+    .logway{
+        margin-left: -150px;
+    }
+    .navbutton{
+        margin-top: -28px;
+        margin-left: 537px;
+        text-indent: 43px;
+        font-size: 21px;
+    }
+    .fa-moon{
+        visibility: hidden;
+        margin-left: 30pxpx;
+        font-size: 21px;
+    }
+    .fa-bars{
+        visibility: hidden;
+        
+    } 
+    .main-class{
+        height: 500px;
+       
+    }
+    .image-div img{
+        height: 240px;
+        width: 240px;
+        margin-left: 30px;
+        margin-top: 40px;
+    }
+   
+    .image-div{
+        width: 350px;
+        background-color: black;
+        margin-top: -30px;
+       height: 390px;
+       margin-left: -150px;
+    }
+    h2{
+        color:white;
+        margin-top: 25px;
+        margin-left: 80px;
+    }
+    tr td{
+        color: black;
+        font-size: 25px;  
+    }
+     td{
+        padding-left: 27px;
+    } 
+   .details{
+  
+    display: flex;
+    background-color: white;
+    border-radius: 12px;
+    margin-top: 150px;
+    width: 650px;
+    margin-left: 180px;
+    padding: 20px;
+    height: 370px;
+    box-shadow: 10px 10px 25px rgb(67, 67, 67);
+   }
+   table{
+        margin-left: 30px;
+        margin-top: -10px;
+        padding: 10px;
+   }
+   .disp{
+    visibility: hidden;
+   }
+   .vis{
+    Visibility: visible;
+   }
+   .btn{
+   height: 30px;
+    width: 170px;
+    border-radius: 320px;
+    border: none;
+    color: white;
+    box-shadow: 10px 10px 15px gray;
+    background-image: linear-gradient(to right, #8c19f0, #4a00e0);
+  
+   }
+   .btn-img{
+    height: 25px;
+    width: 25px;
+    margin-top: -5px;
+    position: absolute;
+    margin-left: 10px;
+   }
+   .foot-page{
+  
+    height: 250px; 
+   
+    background-color: #242424; 
+   }
+   
+   .foot-log{
+    position: absolute;
+    color: white;
+    font-size: 33px;
+    font-weight: bolder;
+    margin-left: 100px;
+    margin-top: 50px;
+
+   }
+   .foot-link{
+    margin-left:40px;
+    margin-top: 60px;
+   
+   }
+   .footer-list{
+    font-weight: bold;
+    display: flex;
+    margin-left: 400px;
+    list-style: none;
+  
+   }
+   .foot-link a{
+    font-weight: bolde;
+    color: white;
+    text-decoration: none;
+    font-size: larger;
+   }
+   .foot-icon{
+    width: 20px;
+    margin-left: 100px;
+    margin-top: 10px;
+   }
+   .foot-icon i{
+   margin-top: 20px;
+    color: white;
+    font-size: 22px;
+   }
+   .foot-copy{
+    color: white;
+    font-size: 13px;
+   }
+   .copy-right{
+    margin-left: 300px;
+    margin-top: -20px;
+   }
+   .foot-up{
+    margin-left: 750px;
+    margin-top: -30px;
+   }
+   .foot-up i{
+    color: white;
+    font-size:27px
+   }
+  
+   .user-photo{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-top: -30px;
+    margin-left: 580px;
+   }
+  
+   .disp{
+    visibility: hidden;
+   }
+   .vis{
+    Visibility: visible;
+}
+}
+
+
+
+/*screen width for phone */
+@media screen  and (max-width: 600px) 
+{
+    html{
+        scroll-behavior: smooth;
+    }
+   
+    
+    .header{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 3;
+        margin-top: 330px;
+        
+        width: 100%; 
+        background-color:white;
+        padding-bottom: 10px;
+    }
+
+   
+    .link{
+    
+    visibility: hidden;
+    } 
+    .navbar{
+        font-weight: bolder;
+        display: flex;
+        font-size: 25px;
+        margin-left: 30px;
+        margin-top: 20px;
+       
+        
+    }
+     .navlist{
+        margin-left: 10px;
+    } 
+    /* .navbutton{
+        margin-top: -30;
+        margin-left: 123px;
+        text-indent: 20px;
+    } */
+
+    .menu{
+        
+        background-color:white;
+        margin-left: 0px;
+        margin-top: -100px;
+        border-radius: 8px 8px 0px 0px;
+        
+        z-index: 1;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        padding-left: 0px;
+        padding-right: 35px;
+        height: 0px;
+        
+    }
+
+   .menus{
+    margin-top: 30px;
+    font-size: 23px;
+    position: absolute;
+    margin-right: 90px;
+    margin-left: 90px;
+    }
+    .menu-ul{
+        display: flex;
+        margin-left: -135px;
+        
+    }
+    .menu-li{
+        margin-left: 110px;
+        list-style-type: none;
+    }  
+    .menu-name{
+        margin-top: 65px;
+        display: flex;
+        margin-left: -12px;
+        
+    } 
+    .menu-name-link{
+        margin-left: 67px;
+        list-style-type: none;
+        font-size: 15;
+
+    } 
+  
+    #close{
+      color: black;
+      position: absolute;
+      margin-left: 415px;
+      margin-top: 25px;
+      font-size: 25px;
+     
+    }
+    .menu-name-link a{
+        text-decoration: none;
+        color: black;
+    }
+
+    .main-class{
+        height: 800px;
+       
+    }
+    .image-div img{
+        height: 220px;
+        width: 220px;
+        margin-left: 30px;
+        margin-top: 20px;
+    }
+   
+    .image-div{
+        width: 280px;
+        background-color: black;
+        margin-top: 10px;
+       height: 300px;
+       margin-left: 50px;
+    }
+    h2{
+        color:white;
+        margin-top: 20px;
+        margin-left: 80px;
+    }
+    tr td{
+        color: black;
+        font-size: 20px;  
+       
+        
+    }
+    td{
+        padding-left: 20px;
+    }
+   .details{
+  
+   
+    background-color: white;
+    border-radius: 12px;
+    margin-top: 50px;
+    width: 400px;
+    margin-left: 50px;
+    padding: 20px;
+    height: 650px;
+    box-shadow: 10px 10px 25px rgb(67, 67, 67);
+   }
+   table{
+        margin-left: 20px;
+        margin-top: 10px;
+        
+   }
+   .disp{
+    visibility: hidden;
+   }
+   .vis{
+    Visibility: visible;
+   }
+   .btn{
+   height: 30px;
+    width: 170px;
+    border-radius: 320px;
+    border: none;
+    color: white;
+    box-shadow: 10px 10px 15px gray;
+    background-image: linear-gradient(to right, #8c19f0, #4a00e0);
+  
+   }
+   .btn-img{
+    height: 25px;
+    width: 25px;
+    margin-top: -5px;
+    position: absolute;
+    margin-left: 10px;
+   }
+   .foot-page{
+    width: 483x;
+    height: 450px; 
+    background-color: #242424;
+   }
+   .foot-log{
+    position: absolute;
+    color: white;
+    font-size: 33px;
+    font-weight: bolder;
+    margin-left: 50px;
+    margin-top: 30px;
+
+   }
+   .foot-link{
+    margin-left: 40px;
+    margin-top: 25px;
+   
+   }
+   .footer-list{
+    padding-top: 100px;
+    font-weight: bold;
+    margin-left: 15px;
+    list-style: none;
+  
+   }
+   .foot-link a{
+    font-weight: bolde;
+    color: white;
+    text-decoration: none;
+    font-size: larger;
+   }
+   .foot-icon{
+    margin-left: 20px;
+    margin-top: 50px;
+   }
+   .foot-icon i{
+    margin-left: 40px;
+    color: white;
+    font-size: 22px;
+   }
+   .foot-copy{
+    color: white;
+    font-size: 13px;
+   }
+   .copy-right{
+    margin-left: 170px;
+    margin-top: 40px;
+   }
+   .foot-up{
+    margin-left: 430px;
+    margin-top: -20px;
+   }
+   .foot-up i{
+    color: white;
+    font-size:27px
+   }
+   .form-input{
+    margin-top: 50px;
+   }
+  /* .user-photo{
+    height: 30px;
+    width: 30px;
+    margin-top: -60px;
+    margin-left: 240px;
+    border-radius: 50%;
+  } */
+  
+   .fa-bars{
+    margin-left: 135px;
+    margin-top: -27px;
+   }
+   .user-photo{
+    height: 30px;
+    width: 30px;
+    margin-top: -38px;
+    margin-left: 240px;
+    border-radius: 50%
+    }
+    .navbutton {
+     margin-top: -12px;
+     margin-left: 123px;
+     text-indent: 20px;
+    }
+}

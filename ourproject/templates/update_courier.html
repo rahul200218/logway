@@ -1,0 +1,343 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/update_courier.css' %}">
+    <script src="https://kit.fontawesome.com/2f4812b960.js" crossorigin="anonymous"></script>
+    <title>Update courier</title>
+    <style>
+      body::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-head">
+            <span class="logway">
+                LogWay
+            </span>
+        </div>
+           
+            <ul class="navlist">
+                <div class="list-link">
+                  <a href="{% url 'home' %}" class="link">Home</a>
+                  <a href="{% url 'home'%}#About " class="link">About</a>
+                  <a href="{% url 'home'%}#Service" class="link">Service</a>
+                  <a href="{% url 'home'%}#Contact" class="link">Contact</a>
+                 
+                  <div class="photo">
+                    {% if request.user.profile %}
+                    <a href="{% url 'profile' %}">
+                  <img src="{{ request.user.profile.url }}" alt="no image" class="user-photo" > </a>
+                  {% else %}
+                  <a href="{% url 'profile' %}">
+                  <img src="/static/img/user1.png" alt=" " class="user-photo" href="{% url 'profile' %}"> </a>
+                  {% endif %} 
+                </div>
+                </div>
+               
+            <div class="navbutton">
+                
+                <i class="fa-solid fa-bars" id="divicon"></i>
+            
+                
+            </div>
+            <div class="menu">
+                <ul class="menu-ul">
+                    <li class="menu-li"><i class="fa-solid fa-house menus" ></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-user menus"></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-briefcase menus"></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-phone menus"></i></li>
+                </ul>
+                <ul class="menu-name">
+                  <li class="menu-name-link" ><a href="{% url 'home' %}">Home</a></li>
+                  <li class="menu-name-link" > <a href="{% url 'home'%}#About">About</a> </li>
+                  <li class="menu-name-link"><a href="{% url 'home'%}#Service">Service</a></li>
+                  <li class="menu-name-link"><a href="{% url 'home'%}#Contact">Contact</a></li>
+                </ul>
+                <i class="fa-solid fa-xmark cross" id="close"></i>
+            </div>
+        
+        </nav>
+    </header>
+    <main class="main-page" style="background: rgba(10, 10, 10,0.8) url({% static '/img/checkpoint.jpg' %});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
+    height: 800px;
+    background-attachment: fixed;">
+        <section class="main-sec">
+           <p class="heading">Update courier checkpoint</p>
+          <form action="" method="POST" >
+            {% csrf_token %}
+            {% if request.user.is_admin %}
+            {% if accepted_by %}
+            <input type="checkbox" id="myCheckbox" checked disabled >
+
+            <label for="myCheckbox"> <p class="tik" id="tik">&#10004</p> </label>
+            <div class="line" id="line"  > <p class="p-track" id="p-track">your courier ha been accepted by {{ couriers.accepted_by }}</p>
+            </div>
+            
+            <input type="checkbox" id="myCheckbox1"  {% if check_point_1 %} checked disabled{% endif %} value="True" name="ch1">
+            <label for="myCheckbox1"><p class="tik" id="tik1">&#10004</p></label>
+            <div class="line1" id="line1"> <p class="p-track1" id="p-track1">your courier have reached to first checkpoint</p>
+            </div>
+
+                      
+            <input type="checkbox" id="myCheckbox2"  {% if check_point_2 %} checked disabled {% endif %}value="True" name="ch2">
+            <label for="myCheckbox2"><p class="tik" id="tik2">&#10004</p></label>
+            <div class="line2" id="line2">
+              <p class="p-track2" id="p-track2">your courier has reached the second checkpoint</p>
+            </div>
+
+            <input type="checkbox" id="myCheckbox3"  {% if check_point_3 %} checked disabled{% endif %} value="True" name="ch3">
+            <label for="myCheckbox3"><p class="tik" id="tik3">&#10004</p></label>
+            <div class="line3" id="line3">  <p class="p-track3" id="p-track3">your courier have reached to third checkpoint</p>
+            </div>
+
+            <input type="checkbox" id="myCheckbox4"  {% if destination_staff %} checked disabled{% endif %} disabled>
+            <label for="myCheckbox4"><p class="tik" id="tik4">&#10004</p></label>
+            
+              <p class="p-track4" id="p-track4">courier has been accepted by {{ couriers.destination_received_by }} for destination address: {{ couriers.destination_address }}
+            </div>
+            <br><br>
+            <button class="submit1 val" style="margin-left: 11px;
+            width: 100px;
+            height: 30px;
+            border-radius: 320px;
+            border: none;
+            color: black;
+            background:linear-gradient( rgb(25, 153, 245),white)">submit</button>
+          </form>
+            {% else %}
+            <input type="checkbox" id="myCheckbox"  disabled>
+
+            <label for="myCheckbox"> <p class="tik" id="tik">&#10004</p> </label>
+            <div class="line" id="line"  > <p class="p-track" id="p-track">courier has not  been accepted by anyone yet.</p>
+            </div>
+
+          
+            {% endif %}
+
+            {% else %}
+            {% if request.user.is_user %}
+            {% if accepted_by %}
+            <input type="checkbox" id="myCheckbox" checked disabled >
+
+            <label for="myCheckbox"> <p class="tik" id="tik">&#10004</p> </label>
+            <div class="line" id="line"  > <p class="p-track" id="p-track">your courier ha been accepted by {{ couriers.accepted_by }}</p>
+            </div>
+            
+            <input type="checkbox" id="myCheckbox1"  {% if check_point_1 %} checked disabled{% endif %} value="True" name="ch1" disabled>
+            <label for="myCheckbox1"><p class="tik" id="tik1">&#10004</p></label>
+            <div class="line1" id="line1"> <p class="p-track1" id="p-track1">your courier have reached to first checkpoint</p>
+            </div>
+
+                      
+            <input type="checkbox" id="myCheckbox2"  {% if check_point_2 %} checked disabled {% endif %}value="True" name="ch2" disabled>
+            <label for="myCheckbox2"><p class="tik" id="tik2">&#10004</p></label>
+            <div class="line2" id="line2">
+              <p class="p-track2" id="p-track2">your courier has reached the second checkpoint</p>
+            </div>
+
+            <input type="checkbox" id="myCheckbox3"  {% if check_point_3 %} checked disabled{% endif %} value="True" name="ch3" disabled>
+            <label for="myCheckbox3"><p class="tik" id="tik3">&#10004</p></label>
+            <div class="line3" id="line3">  <p class="p-track3" id="p-track3">your courier have reached to third checkpoint</p>
+            </div>
+
+            <input type="checkbox" id="myCheckbox4"  {% if destination_staff %} checked disabled{% endif %} disabled>
+            <label for="myCheckbox4"><p class="tik" id="tik4">&#10004</p></label>
+            
+              <p class="p-track4" id="p-track4">Your courier has been accepted by {{ couriers.destination_received_by }}  for destination address: {{ couriers.destination_address }}
+            </div>
+            {% else %}
+            <input type="checkbox" id="myCheckbox"  disabled>
+
+            <label for="myCheckbox"> <p class="tik" id="tik">&#10004</p> </label>
+            <div class="line" id="line"  > <p class="p-track" id="p-track"> Your courier has not  been accepted by anyone yet.</p>
+            </div>
+            {% endif %}
+            {% endif %}
+            {% endif %}
+        
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="foot-page">
+            <span class="foot-log">LogWay</span>
+
+           
+                <ul class="footer-list">
+                  <li class="foot-link"><a href="{% url 'home'%}#Service"> Service</a> </li>
+                        <li class="foot-link"><a href="{% url 'home'%}#Contact" > Contact</a> </li>
+                        <li class="foot-link"><a href="{% url 'home'%}#About" > About</a> </li>
+                </ul>
+                <div class="foot-icon">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-facebook"></i>
+                   
+            </div>
+            <div class="copy-right">
+                <p class="foot-copy">&copy;  LogWay. All right reserved</p>
+            </div>
+            <div class="foot-up" >
+                <a href="#top">    <i class="fa-sharp fa-solid fa-arrow-up"></i> </a>
+         
+            </div>
+        </div>
+
+   </footer>
+</body>
+<script>
+  window.addEventListener("DOMContentLoaded", function() {
+      var checkbox1 = document.getElementById("myCheckbox");
+      var divline1 = document.getElementById("line");
+      var pt1 = document.getElementById("p-track");
+      var tk1 = document.getElementById("tik");
+
+      checkbox1.addEventListener("change", function() {
+        checkboxCheck(checkbox1, divline1, pt1, tk1);
+      });
+
+      checkboxCheck(checkbox1, divline1, pt1, tk1);
+
+      function checkboxCheck(checkbox, divline, pt, tk) {
+        if (checkbox.checked) {
+          divline.style.backgroundColor = "green";
+          divline.style.width = "3px";
+          pt.style.visibility = "visible";
+          tk.style.visibility = "visible";
+        } else {
+          divline.style.backgroundColor = "";
+          pt.style.visibility = "visible";
+          tk.style.visibility = "hidden";
+        }
+      }
+  });
+
+  window.addEventListener("DOMContentLoaded", function() {
+    var checkbox2 = document.getElementById("myCheckbox1");
+    var divline2 = document.getElementById("line1");
+    var pt2 = document.getElementById("p-track1");
+    var tk2 = document.getElementById("tik1");
+
+    checkbox2.addEventListener("change", function() {
+      checkboxCheck(checkbox2, divline2, pt2, tk2);
+    });
+
+    checkboxCheck(checkbox2, divline2, pt2, tk2);
+
+    function checkboxCheck(checkbox, divline, pt, tk) {
+      if (checkbox.checked) {
+        divline.style.backgroundColor = "green";
+        divline.style.width = "3px";
+        pt.style.visibility = "visible";
+        tk.style.visibility = "visible";
+      } else {
+        divline.style.backgroundColor = "";
+        pt.style.visibility = "visible";
+        tk.style.visibility = "hidden";
+      }
+    }
+  });
+
+  window.addEventListener("DOMContentLoaded", function() {
+      var checkbox3 = document.getElementById("myCheckbox2");
+      var divline3 = document.getElementById("line2");
+      var pt3 = document.getElementById("p-track2");
+      var tk3 = document.getElementById("tik2");
+
+      checkbox3.addEventListener("change", function() {
+        checkboxCheck(checkbox3, divline3, pt3, tk3);
+      });
+
+      checkboxCheck(checkbox3, divline3, pt3, tk3);
+
+      function checkboxCheck(checkbox, divline, pt, tk) {
+        if (checkbox.checked) {
+          divline.style.backgroundColor = "green";
+          divline.style.width = "3px";
+          pt.style.visibility = "visible";
+          tk.style.visibility = "visible";
+        } else {
+          divline.style.backgroundColor = "";
+          pt.style.visibility = "visible";
+          tk.style.visibility = "hidden";
+        }
+      }
+  });
+
+  window.addEventListener("DOMContentLoaded", function() {
+      var checkbox4 = document.getElementById("myCheckbox3");
+      var divline4 = document.getElementById("line3");
+      var pt4 = document.getElementById("p-track3");
+      var tk4 = document.getElementById("tik3");
+
+      checkbox4.addEventListener("change", function() {
+        checkboxCheck(checkbox4, divline4, pt4, tk4);
+      });
+
+      checkboxCheck(checkbox4, divline4, pt4, tk4);
+
+      function checkboxCheck(checkbox, divline, pt, tk) {
+        if (checkbox.checked) {
+          divline.style.backgroundColor = "green";
+          divline.style.width = "3px";
+          pt.style.visibility = "visible";
+          tk.style.visibility = "visible";
+        } else {
+          divline.style.backgroundColor = "";
+          pt.style.visibility = "visible";
+          tk.style.visibility = "hidden";
+        }
+      }
+  });
+
+  window.addEventListener("DOMContentLoaded", function() {
+    var checkbox5 = document.getElementById("myCheckbox4");
+    var pt5 = document.getElementById("p-track4");
+    var tk5 = document.getElementById("tik4");
+  
+    checkbox5.addEventListener("change", function() {
+      checkboxCheck(checkbox5,pt5, tk5);
+    });
+  
+    checkboxCheck(checkbox5,pt5, tk5);
+  
+    function checkboxCheck(checkbox,pt, tk) {
+      if (checkbox.checked) {
+      
+        pt.style.visibility = "visible";
+        tk.style.visibility = "visible";
+      } else {
+
+        pt.style.visibility = "visible";
+        tk.style.visibility = "hidden";
+      }
+    }
+  });
+  
+            
+        document.getElementById("divicon").addEventListener('click',displaymenu);
+function displaymenu()
+{
+    var a=document.getElementsByClassName('menu');
+    a[0].style.height = "150px";
+    a[0].style.boxShadow="rgba(0,0,0,0.45) 25px 25px 25px 25px";
+
+}
+
+document.getElementById("close").addEventListener('click',closemenu);
+function closemenu()
+{
+    var a=document.getElementsByClassName('menu');
+    a[0].style.height = "0px";
+    a[0].style.boxShadow="rgba(0,0,0,0.45) 0px 0px 0px 0px";
+}
+</script>
+</html>

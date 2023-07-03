@@ -1,0 +1,348 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+* {
+  font-family: "poppins", sans-serif;
+  padding: 0px;
+		margin: 0px;
+		box-sizing: border-box;
+ 
+}
+@media screen  and (min-width: 901px)
+{
+body{
+    overflow: hidden;
+}
+
+.main{
+   margin-top: 80px;
+   margin-left: -10px;
+   transition: all 2s ease-in;
+   opacity: 0;
+} 
+
+.sub{
+    display: inline-block;
+    margin-left: 35px;
+    margin-top: 250px;
+}
+
+.button2{
+    width: 160px;
+    height: 40px;
+    background-color: rgb(25, 153, 245);
+    border: none;
+    border-radius: 330px;
+    color: white;
+    font-size: medium;
+    font-weight: bolder;
+    position: absolute;
+    margin-top:65px;
+    margin-left: 85px;
+    
+}
+
+.button1{
+    width: 70px;
+    height: 40px;
+    margin-left: 100px;
+    background-color: rgb(25, 153, 245);
+    border: none;
+    border-radius: 330px;
+    color: white;
+    font-size: medium;
+    font-weight: bolder;
+    position: absolute;
+    margin-left: 170px;
+}
+
+
+.spa{
+    position: absolute;
+    margin-top: 180px;
+    margin-left: 80px;
+    font-size: 40px;
+    font-weight: 550;
+}
+
+img{
+    position: absolute;
+    margin-left: 100px;
+    margin-top: -12px;
+    z-index: -1;
+}
+
+.div{
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background-color: rgb(25, 153, 245);
+    margin-left: 175px;
+    margin-top: -235px;
+    z-index: -2;
+}
+
+.cour{
+    position: absolute;
+    margin-top: -340px;
+    margin-left: 630px;
+    z-index: -3; 
+    width: 500px;
+    height: 480px;
+}
+
+
+.ani{
+    margin-left: 50px;
+    opacity: 1;
+    
+    
+}
+.van{
+    position:absolute;
+    margin-left: -100px;
+    z-index: 0;
+    transition: all 5s ease-in;
+    margin-top: 80px;
+    height: 20px;
+    width: 20px;
+    /* opacity: 0; */
+}
+.van-image{
+    height: 200px;
+    width: 200px;
+}
+.van1{
+    margin-left: 1500px;
+    opacity: 1;
+}
+}
+
+
+@media screen and (max-width: 600px) 
+{
+    body{
+        overflow: hidden;
+    }
+    
+    .main{
+       margin-top: 30px;
+       margin-left: -50px;
+       transition: all 2s ease-in;
+       opacity: 0;
+    } 
+    
+    .sub{
+        display: inline-block;
+        margin-left: 35px;
+        margin-top: 250px;
+    }
+    
+    .button2{
+        width: 160px;
+        height: 40px;
+        background-color: rgb(25, 153, 245);
+        border: none;
+        border-radius: 330px;
+        color: white;
+        font-size: medium;
+        font-weight: bolder;
+        position: absolute;
+        margin-top:65px;
+        margin-left: 85px;
+        
+    }
+    
+    .button1{
+        width: 70px;
+        height: 40px;
+        margin-left: 100px;
+        background-color: rgb(25, 153, 245);
+        border: none;
+        border-radius: 330px;
+        color: white;
+        font-size: medium;
+        font-weight: bolder;
+        position: absolute;
+        margin-left: 170px;
+    }
+    
+    
+    .spa{
+        position: absolute;
+        margin-top: 180px;
+        margin-left: 80px;
+        font-size: 40px;
+        font-weight: 550;
+    }
+    
+    img{
+        position: absolute;
+        margin-left: 100px;
+        margin-top: -12px;
+        z-index: -1;
+    }
+    
+    .div{
+        position: absolute;
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        background-color: rgb(25, 153, 245);
+        margin-left: 175px;
+        margin-top: -235px;
+        z-index: -2;
+    }
+    
+    .cour{
+        position: absolute;
+        margin-top: -360px;
+        margin-left: 630px;
+        z-index: -3; 
+        width: 500px;
+        height: 500px;
+    }
+    
+    
+    .ani{
+        margin-left: -10px;
+        opacity: 1;
+        
+        
+    }
+    .van{
+        position:absolute;
+        margin-left: -100px;
+        z-index: -1;
+        transition: all 5s ease-in;
+        margin-top: 150px;
+        height: 20px;
+        width: 20px;
+        /* opacity: 0; */
+    }
+    .van-image{
+        height: 200px;
+        width: 200px;
+    }
+    .van1{
+        margin-left: 950px;
+        opacity: 1;
+    }  
+  
+}
+
+
+@media screen and (min-width: 601px) and (max-width: 900px)
+{
+    body{
+        overflow: hidden;
+    }
+    
+    .main{
+       margin-top: 30px;
+       margin-left: -70px;
+       transition: all 2s ease-in;
+       opacity: 0;
+    } 
+    
+     .sub{
+        display: inline-block;
+        margin-top: 250px;
+        margin-left: 40px;
+       
+    }
+    
+    .button2{
+        width: 160px;
+        height: 37px;
+        background-color: rgb(25, 153, 245);
+        border: none;
+        border-radius: 330px;
+        color: white;
+        font-size: medium;
+        font-weight: bolder;
+        position: absolute;
+        margin-top:65px;
+        margin-left: 60px;
+        
+    }
+    
+    .button1{
+        width: 70px;
+        height: 37px;
+        margin-left: 100px;
+        background-color: rgb(25, 153, 245);
+        border: none;
+        border-radius: 330px;
+        color: white;
+        font-size: medium;
+        font-weight: bolder;
+        position: absolute;
+        margin-left: 145px;
+    }
+    
+    
+    .spa{
+        position: absolute;
+        margin-top: 180px;
+        margin-left: 80px;
+        font-size: 35px;
+        font-weight: 550;
+    }
+    
+    img{
+        position: absolute;
+        margin-left: 75px;
+        margin-top: -12px;
+        z-index: -1;
+    }
+    
+    .div{
+        position: absolute;
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        background-color: rgb(25, 153, 245);
+        margin-left: 150px;
+        margin-top: -235px;
+        z-index: -2;
+    }
+    
+    .cour{
+        position: absolute;
+        margin-top: -260px;
+        margin-left: 360px;
+        z-index: -3; 
+        width: 450px;
+        height: 450px;
+    }
+    
+    
+    .ani{
+        margin-left: -40px;
+        opacity: 1;
+        
+        
+    }
+    .van{
+        position:absolute;
+        margin-left: -100px;
+        z-index: -1;
+        transition: all 5s ease-in;
+        margin-top: 150px;
+        height: 20px;
+        width: 20px;
+        
+        
+    }
+    .van-image{
+        height: 200px;
+        width: 200px;
+    }
+    .van1{
+        margin-left: 900px;
+        opacity: 1;
+    }   
+
+}
+

@@ -1,0 +1,300 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/view_all_courier_admin.css' %}">
+    <script src="https://kit.fontawesome.com/2f4812b960.js" crossorigin="anonymous"></script>
+    <title>view_all_courier</title>
+    <style>
+        body::-webkit-scrollbar {
+            display: none;
+          }
+        .table-container::-webkit-scrollbar {
+            display: none;
+          }
+          .table-container thead {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+          }
+            .messages-container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 9999;
+            }
+    
+            .custom-message {
+                position: relative;
+                padding: 1rem;
+                margin-bottom: 1rem;
+                border: 1px solid transparent;
+                border-radius: 0.25rem;
+                font-family: Georgia;
+            }
+    
+            .custom-message-success {
+                color: #155724;
+                background-color: #d4edda;
+                border-color: #c3e6cb;
+        
+            }
+    
+            .custom-message-danger {
+                color: #721c24;
+                background-color: #f8d7da;
+                border-color: #f5c6cb;
+                
+            }
+    
+            .custom-message .close {
+                position: absolute;
+                top: 0.5rem;
+                right: 0.5rem;
+                color: inherit;
+                opacity: 0.5;
+            }
+    
+            .custom-message .close:hover {
+                opacity: 1;
+            }
+        
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-head">
+            <span class="logway">
+                LogWay
+            </span>
+        </div>
+           
+            <ul class="navlist">
+                <div class="list-link">
+                    <a href="{% url 'home' %}" class="link">Home</a>
+                    <a href="{% url 'home'%}#About " class="link">About</a>
+                    <a href="{% url 'home'%}#Service" class="link">Service</a>
+                    <a href="{% url 'home'%}#Contact" class="link">Contact</a>
+                
+                  <div class="photo">
+                    {% if request.user.profile %}
+                    <a href="{% url 'profile' %}">
+                  <img src="{{ request.user.profile.url }}" alt="no image" class="user-photo" > </a>
+                  {% else %}
+                  <a href="{% url 'profile' %}">
+                  <img src="/static/img/user1.png" alt=" " class="user-photo" href="{% url 'profile' %}"> </a>
+                  {% endif %}
+                </div>
+                </div>
+               
+            <div class="navbutton">
+                
+                <i class="fa-solid fa-bars" id="divicon"></i>
+            
+                
+            </div>
+            <div class="menu">
+                <ul class="menu-ul">
+                    <li class="menu-li"><i class="fa-solid fa-house menus" ></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-user menus"></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-briefcase menus"></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-phone menus"></i></li>
+                </ul>
+                <ul class="menu-name">
+                    <li class="menu-name-link" ><a href="{% url 'home' %}">Home</a></li>
+                    <li class="menu-name-link" > <a href="{% url 'home'%}#About">About</a> </li>
+                    <li class="menu-name-link"><a href="{% url 'home'%}#Service">Service</a></li>
+                    <li class="menu-name-link"><a href="{% url 'home'%}#Contact">Contact</a></li>
+                </ul>
+                <i class="fa-solid fa-xmark cross" id="close"></i>
+            </div>
+        
+        </nav>
+        
+ <div class="messages-container">
+    {% for message in messages %}
+{% if message.tags == 'success' %}
+<div class="custom-message custom-message-success">
+    <span>{{message}}</span>
+    <button class="close" onclick="closeMessage(this)">&times;</button>
+</div>
+{% elif message.tags == 'error' %}
+<div class="custom-message custom-message-danger">
+    <span>{{ message}}</span>
+    <button class="close" onclick="closeMessage(this)">&times;</button>
+</div>
+{% endif %}
+{% endfor %}
+</div>
+
+    </header>
+
+    <main class="view-all-courier" style=" background: rgba(19, 19, 19,0.8) url({% static 'img/thomas-chan-VpxJzLOXBio-unsplash.jpg' %});
+    background-repeat: no-repeat;
+   background-size: cover;
+    background-blend-mode: darken;
+    background-attachment: fixed;
+    color: white;">
+        <div class="main-div">
+            <div class="main-view-page">
+                <img src="/static/img/pexels-karolina-grabowska-4464817.jpg" alt="" class="image-view">
+            </div>
+            <div class="view-paragraph">
+                <span class="view-sentence">
+                    Below here all the couriers from all the location is available. All details like id, phonenumber,sender,staff uploaded images are present. And also payment details is also visible
+                    <br>
+                    <br><br><br>
+                    You can enter the courier id and also get the details of courier.
+                </span>
+            </div>
+            
+           
+        </div>
+        <div class="get-started">
+           
+            <span class="get">Get Started</span>
+            <i class="fa-sharp fa-solid fa-arrow-down"></i>
+        </div>
+       
+       
+
+        <section class="view-all">
+            <span class="sentence1">View all Couriers</span>
+         
+                <form action="" method="POST" id="search-form">
+                    {% csrf_token %}
+                    <div class="search-loca">
+                        <i class="fa-solid fa-magnifying-glass" id="bar"></i>
+                        <input type="search" name="search" id="search" class="search" placeholder="type to search">
+                        <i class="fa-solid fa-magnifying-glass glass2" id="glass"></i>
+                        <i class="fa-solid fa-xmark" id="xmark"></i>
+                    </div>
+                </form>
+        
+        <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                <th>Courier Id</th>
+                <th>Sender</th>
+                <th>Location</th>
+                <th>Phone Number</th>
+               
+                <th>View Details</th>
+                <th>Update</th>
+                <th>Payment</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    {% for courier in couriers %}
+                    <td>{{ courier.courier_id }}</td>
+                    <td>{{ courier.sender }}</td>
+                    <td>{{ courier.location }}</td>
+                    <td>{{ courier.phone_number }}</td>
+                   
+                    <td><button style="color:green"><a href="{% url 'view_courier_details' courier.id %}" style="text-decoration:none;">View Details</a></button></td>
+                    <td><button style="color:green"><a href="{% url 'update_courier' courier.id %}" style="text-decoration:none;">Update</a></button></td>
+                    {% if courier.payment %}
+                    <td style="color:white;background-color:green;">Payment done</td>
+                    {% else %}
+                    <td style="color:white;background-color:red">Payment pending</td>
+                    {% endif %}
+                        </tr>
+                        </tbody>
+                        
+                        {% endfor %}
+                </tr>
+               
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+          
+       
+    </main>
+
+    <footer class="footer">
+        <div class="foot-page">
+            <span class="foot-log">LogWay</span>
+
+           
+                <ul class="footer-list">
+                    <li class="foot-link"><a href="{% url 'home'%}#Service"> Service</a> </li>
+                    <li class="foot-link"><a href="{% url 'home'%}#Contact" > Contact</a> </li>
+                    <li class="foot-link"><a href="{% url 'home'%}#About" > About</a> </li>
+                </ul>
+                <div class="foot-icon">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-facebook"></i>
+                   
+            </div>
+            <div class="copy-right">
+                <p class="foot-copy">&copy;  LogWay. All right reserved</p>
+            </div>
+            <div class="foot-up" >
+                <a href="#Home">    <i class="fa-sharp fa-solid fa-arrow-up"></i> </a>
+         
+            </div>
+        </div>
+
+   </footer>
+
+</body>
+<script>
+     
+
+    var bar1 = document.getElementById("bar");
+    var searchForm = document.getElementById("search-form");
+    var sea = document.getElementById("search");
+    var gls = document.getElementById("glass");
+    var xm = document.getElementById("xmark");
+
+    bar1.addEventListener("click", function() {
+        sea.style.visibility = "visible";
+        bar1.style.visibility = "hidden";
+        gls.style.visibility = "visible";
+        xm.style.visibility = "visible";
+    });
+
+    gls.addEventListener("click", function() {
+        searchForm.submit();
+    });
+
+    xm.addEventListener("click", function() {
+        sea.style.visibility = "hidden";
+        bar1.style.visibility = "visible";
+        gls.style.visibility = "hidden";
+        xm.style.visibility = "hidden";
+    });
+
+  
+        document.getElementById("divicon").addEventListener('click',displaymenu);
+function displaymenu()
+{
+    var a=document.getElementsByClassName('menu');
+    a[0].style.height = "150px";
+    a[0].style.boxShadow="rgba(0,0,0,0.45) 25px 25px 25px 25px";
+
+}
+
+document.getElementById("close").addEventListener('click',closemenu);
+function closemenu()
+{
+    var a=document.getElementsByClassName('menu');
+    a[0].style.height = "0px";
+    a[0].style.boxShadow="rgba(0,0,0,0.45) 0px 0px 0px 0px";
+}
+function closeMessage(element) {
+    var message = element.parentNode;
+    message.parentNode.removeChild(message);
+}
+
+
+</script>
+</html>

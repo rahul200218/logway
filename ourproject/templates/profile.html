@@ -1,0 +1,182 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <script src="https://kit.fontawesome.com/2f4812b960.js" crossorigin="anonymous"></script>
+    <title>profile page</title>
+    <style>
+        body::-webkit-scrollbar {
+            display: none;
+          }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-head">
+            <span class="logway">
+                LogWay
+            </span>
+        </div>
+           
+            <ul class="navlist">
+                <div class="list-link">
+                    <a href="{% url 'home' %}" class="link">Home</a>
+                    <a href="{% url 'home'%}#About " class="link">About</a>
+                    <a href="{% url 'home'%}#Service" class="link">Service</a>
+                    <a href="{% url 'home'%}#Contact" class="link">Contact</a>
+                 
+                  <div class="photo">
+                    {% if request.user.profile %}
+                    <a href="{% url 'profile' %}">
+                  <img src="{{ request.user.profile.url }}" alt="no image" class="user-photo" > </a>
+                  {% else %}
+                  <a href="{% url 'profile' %}">
+                  <img src="/static/img/user1.png" alt=" " class="user-photo" href="{% url 'profile' %}"> </a>
+                  {% endif %}
+                </div>
+                </div>
+               
+            <div class="navbutton">
+                
+                <i class="fa-solid fa-bars" id="divicon"></i>
+            
+                
+            </div>
+            <div class="menu">
+                <ul class="menu-ul">
+                    <li class="menu-li"><i class="fa-solid fa-house menus" ></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-user menus"></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-briefcase menus"></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-phone menus"></i></li>
+                </ul>
+                <ul class="menu-name">
+                    <li class="menu-name-link" ><a href="{% url 'home' %}">Home</a></li>
+                    <li class="menu-name-link" > <a href="{% url 'home'%}#About">About</a> </li>
+                    <li class="menu-name-link"><a href="{% url 'home'%}#Service">Service</a></li>
+                    <li class="menu-name-link"><a href="{% url 'home'%}#Contact">Contact</a></li>
+                </ul>
+                <i class="fa-solid fa-xmark cross" id="close"></i>
+            </div>
+        
+        </nav>
+    </header>
+
+    <main class="main-page">
+        <section class="profile-page">
+            <p class="profile">Profile</p>
+            <div class="main-div">
+                <div class="sub-div1">
+                    <p class="about">About Me</p>
+                    <p class="sub-about">
+                        {{ request.user.about }}
+                     </p>
+                </div>
+                <div class="sub-div2">
+                    <div class="img-div">
+                        {% if request.user.profile %}
+                        <img src="{{ request.user.profile.url }}" alt="">
+                        {% else %}
+                        <img src="/static/img/user1.png" alt="">
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="sub-div3">
+                    <p class="details">Details</p>
+                        <h3>Name:</h3>
+                        <h4>{{ request.user.username }}</h4>
+                        <h3>Location</h3>
+                        <h4>{{ request.user.location }}</h4>
+                        <h3>Email:</h3>
+                        <h4>{{ request.user.email }}</h4>
+                </div>
+                
+            </div>
+          <button id="btn" onclick="myfunc1()" >
+            Edit
+            <i class="fa-sharp fa-solid fa-pen"></i>
+          </button>
+           <div class="profile2" id="profile2">
+            <i class="fa-sharp fa-solid fa-xmark" id="x-mark1"></i>
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="new-pro" class="label1">Update new profile</label>
+                <input type="file" name="new-profile" id="new-profile" required>
+                <br>
+                <br>
+                <label for="abo" id="abo" class="label1">Enter about</label>
+                <textarea name="abo" id="abou" cols="30" rows="5" required></textarea>
+                <input type="submit" value="Change">
+            </form>
+          </div> 
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="foot-page">
+            <span class="foot-log">LogWay</span>
+
+           
+                <ul class="footer-list">
+                    <li class="foot-link"><a href="{% url 'home'%}#Service"> Service</a> </li>
+                    <li class="foot-link"><a href="{% url 'home'%}#Contact" > Contact</a> </li>
+                    <li class="foot-link"><a href="{% url 'home'%}#About" > About</a> </li>
+                </ul>
+                <div class="foot-icon">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-facebook"></i>
+                   
+            </div>
+            <div class="copy-right">
+                <p class="foot-copy">&copy;  LogWay. All right reserved</p>
+            </div>
+            <div class="foot-up" >
+                <a href="#top">    <i class="fa-sharp fa-solid fa-arrow-up"></i> </a>
+         
+            </div>
+        </div>
+
+   </footer>
+</body>
+<script>
+   
+      
+       
+      var btn1=document.getElementById("btn");
+      var pro=document.getElementById("profile2");
+       function myfunc1()
+       { 
+            btn1.style.visibility="hidden"
+            pro.classList.add("profile3");
+
+       }
+       var xmark=document.getElementById("x-mark1");
+       xmark.addEventListener("click",myfunc2);
+       function myfunc2()
+       {
+        btn1.style.visibility="visible"
+            pro.classList.remove("profile3");
+       }
+        document.getElementById("divicon").addEventListener('click',displaymenu);
+function displaymenu()
+{
+    var a=document.getElementsByClassName('menu');
+    a[0].style.height = "150px";
+    a[0].style.boxShadow="rgba(0,0,0,0.45) 25px 25px 25px 25px";
+
+}
+
+document.getElementById("close").addEventListener('click',closemenu);
+function closemenu()
+{
+    var a=document.getElementsByClassName('menu');
+    a[0].style.height = "0px";
+    a[0].style.boxShadow="rgba(0,0,0,0.45) 0px 0px 0px 0px";
+}
+</script>
+</html>

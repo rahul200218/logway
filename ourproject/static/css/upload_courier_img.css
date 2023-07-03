@@ -1,0 +1,728 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+* {
+  font-family: "Raleway", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+ } 
+
+i{
+    cursor: pointer;
+}
+
+/* CSS for screens with a width above 900px */
+@media screen and (min-width: 901px) 
+{
+    html{
+        scroll-behavior: smooth;
+    }
+
+    .header{
+        height: 67px;
+        width: 100%;
+        position: fixed;
+        padding-bottom: 10px;
+    
+        background-color: #242424;  
+        
+        z-index: 2;
+        
+
+    }
+    .link{
+    text-decoration: none;   
+    color:white;
+    margin-left: 74px; 
+
+    }
+    .list-link{
+        margin-left: 187px;
+    
+    }
+    .list-link i{
+    position: absolute;
+
+        margin-left: 80px;
+    }
+    .navbar{
+        font-weight: bolder;
+        display: flex;
+        font-size: 21px;
+        margin-left: 270px;
+        margin-top: 25px;
+        z-index:1;
+        color:white;
+        height: 35px;
+        
+    }
+
+
+    .logway{
+        margin-left: -150px;
+    }
+    .navbutton{
+        margin-top: -28px;
+        margin-left: 537px;
+        text-indent: 43px;
+        font-size: 21px;
+    }
+    .fa-moon{
+        visibility: hidden;
+        margin-left: 30pxpx;
+        font-size: 21px;
+    }
+    .fa-bars{
+        visibility: hidden;
+        
+    }
+    .user-photo{
+        position: absolute;
+        width: 30;
+        height: 30;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    .photo img{
+        margin-top: -30px;
+        margin-left: 740px;
+    
+    }
+    .menu{
+        visibility: hidden;
+    }
+    .register-complain{
+        background: rgba(20, 20, 20,0.8) url(acceptedcourier.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-blend-mode: darken;
+       background-attachment: fixed;
+        color: white;
+        padding-bottom: 120px;
+      
+    }
+
+    .sentence1{
+        margin-left: 450px;
+        font-size: 35px;
+        font-weight: bold;
+      text-shadow: 10px 10px 10px black;
+       position: absolute;
+       margin-top: 150px;
+        
+    }
+    .upload-cour{
+        margin-left:420px;
+        margin-top: 320px;
+        border: none;
+        padding: 40px;
+        display: inline-block;
+        background-color: #DDC3A5;
+        border-radius: 12px;
+        
+    }
+    form label{
+        font-size: larger;
+        color: black;
+    }
+   
+    input{
+        margin-left: 45px;
+        text-indent: 20px;
+        height: 30px;
+        width: 200px;
+        border-radius: 330px;
+        border: none;
+    }
+    #price{
+        margin-top: 25px;
+    }
+   
+  
+    input:focus,
+      select:focus,
+      textarea:focus,
+      button:focus {
+         outline: none;
+      }
+      #sub{
+        margin-top: 40px;
+        height: 32px;
+        width: 140px;
+        font-size: 17px;
+        margin-left: 100px;
+        background-image: linear-gradient(to top, #8e2de2, #6018eec6);
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 330px;
+        text-indent: 5px;
+        box-shadow: 10px 10px 10px black;
+     }
+     #img{
+        margin-left: 20px;
+     }
+     .foot-page{
+  
+        height: 220px; 
+       
+        background-color: #242424; 
+       }
+       
+       .foot-log{
+        position: absolute;
+        color: white;
+        font-size: 33px;
+        font-weight: bolder;
+        margin-left: 250px;
+        margin-top: 50px;
+    
+       }
+       .foot-link{
+        margin-left: 40px;
+        margin-top: 60px;
+       
+       }
+       .footer-list{
+        font-weight: bold;
+        display: flex;
+        margin-left: 500px;
+        list-style: none;
+      
+       }
+       .foot-link a{
+        font-weight: bolde;
+        color: white;
+        text-decoration: none;
+        font-size: larger;
+       }
+       .foot-icon{
+        margin-left: 900px;
+        margin-top: -20px;
+       }
+       .foot-icon i{
+        margin-left: 40px;
+        color: white;
+        font-size: 22px;
+       }
+       .foot-copy{
+        color: white;
+        font-size: 13px;
+       }
+       .copy-right{
+        margin-left: 600px;
+        margin-top: 70px;
+       }
+       .foot-up{
+        margin-left: 1200px;
+        margin-top: -30px;
+       }
+       .foot-up i{
+        color: white;
+        font-size:27px
+       }
+       .disp{
+        visibility: hidden;
+       }
+       .vis{
+        Visibility: visible;
+       }
+}
+
+
+/*SCREEN WIDTH FOR TABLET*/
+@media screen  and (min-width: 601px) and (max-width:900px)
+{
+       html{
+        scroll-behavior: smooth;
+    }
+    header :hover{
+        background-color: white;
+        color: black;
+        padding: 2px;
+        border-radius: 5px;
+        
+       
+    }
+    .header{
+        height: 67px;
+        width: 100%;
+        position: fixed;
+        padding-bottom: 10px;
+       
+          background-color: #242424;  
+        
+        z-index: 2;
+        
+    
+    }
+    
+   
+    .link{
+    text-decoration: none;   
+    color:white;
+     margin-left: 45px; 
+
+    }
+    .list-link{
+        margin-left: 10px;
+       
+    }
+   .list-link i{
+    position: absolute;
+    
+        margin-left: 50px;
+    }
+    .navbar{
+        font-weight: bolder;
+        display: flex;
+        font-size: 21px;
+        margin-left: 230px;
+        margin-top: 25px;
+        z-index:1;
+        color:white;
+        height: 20px;
+        
+    }
+   
+    .menu{
+        visibility: hidden;
+    }
+    .logway{
+        margin-left: -150px;
+    }
+    .navbutton{
+        margin-top: -28px;
+        margin-left: 537px;
+        text-indent: 43px;
+        font-size: 21px;
+    }
+    .fa-moon{
+        visibility: hidden;
+        margin-left: 30pxpx;
+        font-size: 21px;
+    }
+    .fa-bars{
+        visibility: hidden;
+        
+    }
+   
+    .register-complain{
+        background: rgba(20, 20, 20,0.8) url(acceptedcourier.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-blend-mode: darken;
+       background-attachment: fixed;
+        color: white;
+        padding-bottom: 120px;
+      
+    }
+
+    .sentence1{
+        margin-left: 260px;
+        font-size: 35px;
+        font-weight: bold;
+      text-shadow: 10px 10px 10px black;
+       position: absolute;
+       margin-top: 150px;
+        
+    }
+    .upload-cour{
+        margin-left:240px;
+        margin-top: 320px;
+        border: none;
+        padding: 40px;
+        display: inline-block;
+        background-color: #DDC3A5;
+        border-radius: 12px;
+        
+    }
+    form label{
+        font-size: larger;
+        color: black;
+    }
+   
+    input{
+        margin-left: 45px;
+        text-indent: 20px;
+        height: 30px;
+        width: 200px;
+        border-radius: 330px;
+        border: none;
+    }
+    #price{
+        margin-top: 25px;
+    }
+   
+  
+    input:focus,
+      select:focus,
+      textarea:focus,
+      button:focus {
+         outline: none;
+      }
+      #sub{
+        margin-top: 40px;
+        height: 32px;
+        width: 140px;
+        font-size: 17px;
+        margin-left: 100px;
+        background-image: linear-gradient(to top, #8e2de2, #6018eec6);
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 330px;
+        text-indent: 5px;
+        box-shadow: 10px 10px 10px black;
+     }
+     #img{
+        margin-left: 20px;
+     }
+   .foot-log{
+    position: absolute;
+    color: white;
+    font-size: 33px;
+    font-weight: bolder;
+    margin-left: 100px;
+    margin-top: 50px;
+
+   }
+   .foot-page{
+  
+    height: 220px; 
+   
+    background-color: #242424; 
+   }
+   .foot-link{
+    margin-left:40px;
+    margin-top: 60px;
+   
+   }
+   .footer-list{
+    font-weight: bold;
+    display: flex;
+    margin-left: 400px;
+    list-style: none;
+  
+   }
+   .foot-link a{
+    font-weight: bolde;
+    color: white;
+    text-decoration: none;
+    font-size: larger;
+   }
+   .foot-icon{
+    width: 20px;
+    margin-left: 100px;
+    margin-top: 10px;
+   }
+   .foot-icon i{
+   margin-top: 20px;
+    color: white;
+    font-size: 22px;
+   }
+   .foot-copy{
+    color: white;
+    font-size: 13px;
+   }
+   .copy-right{
+    margin-left: 300px;
+    margin-top: -20px;
+   }
+   .foot-up{
+    margin-left: 750px;
+    margin-top: -30px;
+   }
+   .foot-up i{
+    color: white;
+    font-size:27px
+   }
+  
+   .user-photo{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-top: -30px;
+    margin-left: 580px;
+   }
+  
+   .disp{
+    visibility: hidden;
+   }
+   .vis{
+    Visibility: visible;
+}
+}
+
+
+
+
+/*screen width for phone */
+@media screen  and (max-width: 600px) 
+{
+    html{
+        scroll-behavior: smooth;
+    }
+   body{
+    overflow-x: hidden;
+   }
+    header :hover{
+        background-color: white;
+        color: black;
+        padding: 2px;
+        border-radius: 5px;
+        
+       
+    }
+    .header{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 3;
+        margin-top: 330px;
+        
+        width: 100%; 
+        background-color:white;
+        padding-bottom: 10px;
+    }
+
+   
+    .link{
+    
+    visibility: hidden;
+    } 
+    .navbar{
+        font-weight: bolder;
+        display: flex;
+        font-size: 25px;
+        margin-left: 30px;
+        margin-top: 20px;
+       
+        
+    }
+     .navlist{
+        margin-left: 10px;
+    } 
+    .navbutton{
+        margin-top: -30;
+        margin-left: 123px;
+        text-indent: 20px;
+    }
+
+    .menu{
+        
+        background-color:white;
+        margin-left: 0px;
+        margin-top: -100px;
+        border-radius: 8px 8px 0px 0px;
+        
+        z-index: 1;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        padding-left: 0px;
+        padding-right: 35px;
+        height: 0px;
+        
+    }
+
+   .menus{
+    margin-top: 30px;
+    font-size: 23px;
+    position: absolute;
+    margin-right: 90px;
+    margin-left: 90px;
+    }
+    .menu-ul{
+        display: flex;
+        margin-left: -135px;
+        
+    }
+    .menu-li{
+        margin-left: 110px;
+        list-style-type: none;
+    }  
+    .menu-name{
+        margin-top: 65px;
+        display: flex;
+        margin-left: -12px;
+        
+    } 
+    .menu-name-link{
+        margin-left: 67px;
+        list-style-type: none;
+        font-size: 15;
+
+    } 
+    .cross{
+        position: absolute;
+        margin-left: 415px;
+        margin-top: 25px;
+        font-size: 23px;
+    } 
+    .menu-name-link a{
+        text-decoration: none;
+        color: black;
+    }
+      
+
+    .register-complain{
+        background: rgba(20, 20, 20,0.8) url(acceptedcourier.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-blend-mode: darken;
+       background-attachment: fixed;
+        color: white;
+        padding-bottom: 120px;
+      
+    }
+
+    .sentence1{
+        margin-left: 60px;
+        font-size: 35px;
+        font-weight: bold;
+      text-shadow: 10px 10px 10px black;
+       position: absolute;
+       margin-top: 70px;
+        
+    }
+    .upload-cour{
+        margin-left:40px;
+        margin-top: 200px;
+        border: none;
+        padding: 40px;
+        display: inline-block;
+        background-color: #DDC3A5;
+        border-radius: 12px;
+        
+    }
+    form label{
+        font-size: larger;
+        color: black;
+    }
+   
+    input{
+        margin-left: 45px;
+        text-indent: 20px;
+        height: 30px;
+        width: 200px;
+        border-radius: 330px;
+        border: none;
+    }
+    #price{
+        margin-top: 25px;
+    }
+   
+  
+    input:focus,
+      select:focus,
+      textarea:focus,
+      button:focus {
+         outline: none;
+      }
+      #sub{
+        margin-top: 40px;
+        height: 32px;
+        width: 140px;
+        font-size: 17px;
+        margin-left: 100px;
+        background-image: linear-gradient(to top, #8e2de2, #6018eec6);
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 330px;
+        text-indent: 5px;
+        box-shadow: 10px 10px 10px black;
+     }
+     #img{
+        margin-left: 20px;
+     }
+   .foot-page{
+    width: 483px;
+    height: 450px; 
+    background-color: #242424;
+   }
+   .foot-log{
+    position: absolute;
+    color: white;
+    font-size: 33px;
+    font-weight: bolder;
+    margin-left: 50px;
+    margin-top: 30px;
+
+   }
+   .foot-link{
+    margin-left: 40px;
+    margin-top: 25px;
+   
+   }
+   .footer-list{
+    padding-top: 100px;
+    font-weight: bold;
+    margin-left: 15px;
+    list-style: none;
+  
+   }
+   .foot-link a{
+    font-weight: bolde;
+    color: white;
+    text-decoration: none;
+    font-size: larger;
+   }
+   .foot-icon{
+    margin-left: 20px;
+    margin-top: 50px;
+   }
+   .foot-icon i{
+    margin-left: 40px;
+    color: white;
+    font-size: 22px;
+   }
+   .foot-copy{
+    color: white;
+    font-size: 13px;
+   }
+   .copy-right{
+    margin-left: 170px;
+    margin-top: 40px;
+   }
+   .foot-up{
+    margin-left: 430px;
+    margin-top: -20px;
+   }
+   .foot-up i{
+    color: white;
+    font-size:27px
+   }
+   .form-input{
+    margin-top: 50px;
+   }
+  .user-photo{
+    height: 30px;
+    width: 30px;
+    margin-top: -60px;
+    margin-left: 240px;
+    border-radius: 50%;
+  }
+  
+   .fa-bars{
+    margin-left: 135px;
+    margin-top: -27px;
+   }
+   .user-photo{
+    height: 30px;
+     width: 30px;
+     margin-top: -43px;
+     margin-left: 240px;
+     border-radius: 50%;
+    }
+    .navbutton {
+     margin-top: -12px;
+     margin-left: 123px;
+     text-indent: 20px;
+    }
+}
+
+    

@@ -1,0 +1,459 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+* {
+  font-family: "poppins", sans-serif;
+  padding: 0px;
+		margin: 0px;
+		box-sizing: border-box;
+  
+}
+
+
+/* CSS for screens with a width up to 600px */
+@media only screen and (max-width: 600px) {
+  .head {
+    margin-left: 110px;
+    margin-right: 20px;
+    font-size: 40px;
+  
+    
+  }
+  input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+  body {
+    background-color:white;
+    position: relative;
+    overflow: hidden;
+  }
+  .box {
+    
+    margin-top: 190px;
+      margin-left: 70px;
+      font-weight:bolder;
+      width: 550px;
+    opacity: 0;
+      
+  }
+  .box::before{
+    
+
+    
+    content: "";
+    background-color: rgb(25, 153, 245);
+    position:absolute;
+    width: 1000px;
+    height: 1000px;
+    margin-left: -310px;
+    border-radius: 50%;
+    margin-top: -1050px;
+    z-index: -1; 
+      
+  }
+  .box1{
+    margin-left:53px;
+    transition: all 2s ease-in;
+    opacity: 1; 
+    margin-top: 190px;
+  }
+  
+  .inputf {
+    max-width: 380px;
+  width: 70%;
+  background-color: #f0f0f0;
+  margin: 10px 0;
+  height: 52px;
+  border-radius: 55px;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  
+  }
+  .inputf i {
+    text-align: center;
+    line-height: 50px;
+    color: #acacac;
+  
+    font-size: 16px;
+  }
+  .inputf input {
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 3;
+    font-weight: 600;
+    font-size: 16px;
+    color: #333;
+  }
+  .inputf input::placeholder {
+    color: #aaa;
+    font-weight: 500;
+  }
+ 
+  
+  .sub {
+    border-radius: 330px;
+    width: 130px;
+    height: 40px;
+    margin-left: 100px;
+    background-color: rgb(25, 153, 245);
+    border: none  ;
+    color: white;
+    font-size: medium;
+    font-weight: bolder;
+    margin-top: 20px;
+  }
+  .check {
+    margin-left: 22px;
+    position: absolute;
+    margin-top: 5px;
+  }
+  .b{
+    position: absolute;
+    margin-top: 8px;
+  }
+  .check1 {
+    margin-left: 22px;
+    position: absolute;
+    margin-top: 5px;
+  }
+  .hide{
+    position: absolute;
+    margin-top: 8px;
+  }
+ 
+  .spa {
+    margin-left: 200px;
+    margin-top: -14px;
+    position: absolute;
+    
+  }
+  .spa1 {
+    position: absolute;
+    margin-left: 30px;
+    margin-top: 5px;
+
+  }
+  .txt1{
+  margin-top: -450px;
+  margin-left: 135px;
+    font-size: 25;
+  position: absolute;
+   color: white;
+  font-weight: 700;
+
+ } 
+ .img{
+  margin-top: -600px;
+  margin-left: 40px;
+    
+ }
+} 
+
+/* CSS for screens with a width up to 900px */
+@media screen and (min-width: 601px) and (max-width: 900px) 
+ {
+  .head {
+    position: absolute;
+    margin-left: 120px;
+    margin-right: 20px;
+    font-size: 50px;
+    margin-top: -70px;
+  
+
+  }
+  input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+  .box {
+     margin: -50px auto ; 
+    margin-top: 150px;
+      margin-left:180px;
+      font-weight: bolder;
+      width: 550px;
+      opacity: 0;
+  }
+   .box::before{
+    content: "";
+    background-color: rgb(25, 153, 245);
+    position:absolute;
+    width: 1000px;
+    height: 1000px;
+    margin-left: -920px;
+    border-radius: 50%;
+    margin-top: -830px;
+    z-index: -1; 
+
+
+     
+  }
+  body {
+    background-color: white;
+    position: relative;
+    overflow: hidden;
+  }
+   .box1{
+    margin-left:300px;
+     transition: all 3s ease-in; 
+  opacity: 1;
+    margin-top: 150px;
+  } 
+  
+  .inputf {
+    max-width: 380px;
+  width: 70%;
+  background-color: #f0f0f0;
+  margin: 10px 0;
+  height: 52px;
+  border-radius: 55px;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  margin-left: 23px;
+  }
+  .inputf i {
+    text-align: center;
+    line-height: 55px;
+    color: #acacac;
+  
+    font-size: 16px;
+  }
+  .inputf input {
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 3;
+    font-weight: 600;
+    font-size: 16px;
+    color: #333;
+  }
+  .inputf input::placeholder {
+    color: #aaa;
+    font-weight: 500;
+  }
+  .sub {
+    border-radius: 330px;
+    width: 150px;
+    height: 45px;
+    margin-left: 130px;
+    background-color: rgb(25, 153, 245);
+    border: none;
+    color: white;
+    font-size: medium;
+    font-weight: bolder;
+    margin-top: 25px;
+  }
+  .check {
+    margin-left: 70px;
+    position: absolute;
+    margin-top: 10px;
+  }
+  .b{
+    margin-left: 50px;
+    position: absolute;
+    margin-top: 12px;
+  }
+  .check1 {
+    margin-left: 70px;
+    position: absolute;
+    margin-top: 10px;
+  }
+  .hide{
+    margin-left: 50px;
+    position: absolute;
+    margin-top: 12px;
+  }
+  .spa {
+    margin-left: 240px;
+    margin-top:-10px;
+    position: absolute;
+  }
+  .spa1 {
+    position: absolute;
+    margin-left: 80px;
+    margin-top: 30px;
+  }
+  .txt1{
+    margin-top: -300px;
+    margin-left: -240px;
+      font-size: 25;
+    position: absolute;
+     color:white;
+    font-weight: 700;
+  
+   } 
+   .img{
+    margin-top: -450px;
+    margin-left: -330px;
+      
+   }
+  
+}  
+
+/* CSS for screens with a width above 900px */
+@media screen and (min-width: 901px) 
+ {
+  .head {
+    position: absolute;
+    margin-left: 83px;
+    margin-right: 20px;
+    font-size: 50px;
+    margin-top: -70px;
+  
+
+  }
+
+  .box {
+     margin: -50px auto ; 
+    margin-top: 150px;
+      margin-left:700px;
+      font-weight: bolder;
+      width: 550px;
+      opacity: 0;
+  }
+   .box::before{
+    
+    content: "";
+    background-color: rgb(25, 153, 245);
+    position: absolute;
+    width: 2000px;
+    height: 0px;
+    top: -50%;
+    left: -40%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 2s ease-in;
+    z-index: -1
+
+
+     
+  }
+   .box1{
+    margin-left:620px;
+     transition: all 3s ease-in; 
+  opacity: 1;
+    margin-top: 150px;
+  } 
+  
+  .inputf {
+    
+    max-width: 380px;
+  width: 100%;
+  background-color: #f0f0f0;
+  margin: 10px 0;
+  height: 55px;
+  border-radius: 55px;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  
+  }
+   .check1{
+    margin-left: 26px;
+    position: absolute;
+    margin-top: 10px;
+  } 
+  .hide{
+    position: absolute;
+    margin-top: 12px;
+    margin-left: 7px;
+  }
+  .sub {
+    border-radius: 330px;
+    width: 150px;
+    height: 45px;
+    margin-left: 100px;
+    background-color: rgb(25, 153, 245);
+    border: none;
+    color: white;
+    font-size: medium;
+    font-weight: bolder;
+    margin-top: 30px;
+  }
+  .check {
+    margin-left: 22px;
+    position: absolute;
+    margin-top: 10px;
+  }
+  .b{
+    position: absolute;
+    margin-top: 12px;
+  }
+  .spa {
+    margin-left: 200px;
+    margin-top:-10px;
+    position: absolute;
+    
+  }
+  .spa1 {
+    position: absolute;
+    margin-left: 40px;
+    margin-top: 30px;
+  }
+  .txt1{
+    margin-top: -180px;
+    margin-left: -490px;
+      font-size: 40;
+    position: absolute;
+     color:white;
+    font-weight: 700;
+  
+   } 
+   .img{
+    margin-top: -320px;
+    margin-left: -560px;
+      
+   }
+   .ani::before {
+    content: "";
+    background-color: rgb(25, 153, 245);
+    position: absolute;
+    width: 2000px;
+    height: 2000px;
+    top: -50%;
+    left: -40%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+} 
+body {
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+.inputf i {
+  text-align: center;
+  line-height: 55px;
+  color: #acacac;
+  font-size: 18px;
+}
+.inputf input {
+  background: none;
+  outline: none;
+  border: none;
+  line-height: 3;
+  font-weight: 600;
+  font-size: 18px;
+  color: #333;
+}
+.inputf input::placeholder {
+  color: #aaa;
+  font-weight: 500;
+}
+
+}  
+
+
+
+
+

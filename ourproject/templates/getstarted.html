@@ -1,0 +1,54 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/getstarted.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <title>Get </title>
+</head>
+<body onload="ani()">
+    <div class="main" id="main">
+    <img src="/static/img/logo.png" alt="" class="img" height="150" width="280">
+    <span class="spa">Welcome to LogWay <br><p style="font-size:10px;">logway4u@gmail.com</p></span>
+    
+    <div class="sub">
+        {% comment %} <p style="font-size:10px;position:fixed;top:100px">support mail logway4u@gmail.com</p> {% endcomment %}
+        <a href="{% url 'login' %}"> 
+            <input type="submit" value="Login" class="button1" >
+        </a>
+    
+    </div>
+    <div class="sub">
+        <a href="{% url 'verify_email' %}">
+            <input type="submit" value="Create an account" class="button2">
+            
+        </a>
+    </div>
+
+    <div class="div">
+       
+    </div>
+    
+   
+
+</div>
+
+        <img  src="static/img/courier.jpg" alt="" class="cour"   >  
+        <div class="van" id="van"><img src="static/img/Van-animation-Wind-Final.gif" alt="" class="van-image"></div>
+     
+
+<script>
+    function ani()
+    {
+        var a=document.getElementById("main");
+        a.classList.add("ani");
+        var b=document.getElementById('van');
+        b.classList.add("van1");
+
+    }
+</script>
+</body>
+</html>

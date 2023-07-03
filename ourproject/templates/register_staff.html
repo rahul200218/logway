@@ -1,0 +1,184 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <script src="https://kit.fontawesome.com/2f4812b960.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>rigister staff</title>
+    
+    <style>
+        .cusmes{
+            position: fixed;
+            top: -24px;
+            width: 100%;
+            margin-left: -13px;
+            z-index: 999;
+        }
+        
+        
+    </style>
+</head>
+    
+</head>
+<body onload="ani()">
+    <div class="box" id="box">
+        {% if messages %}
+            <div class="container mt-4 cusmes">
+                {% for message in messages %}
+                    <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+    <form action="" method="POST">
+        {% csrf_token %}
+        <header class="head" >SIGN UP</header>
+        <br>
+        <div class="input-box">
+        <div class="inputf">
+            <i class="fa fa-user" ></i>
+        <input    type="text"  value="" placeholder="Username"  name="name" required>
+        </div>
+        
+        
+        {% comment %} <div class="inputf">
+            <i class="fa fa-user" ></i>
+        <input    type="text"  value="" placeholder="Last name" pattern="[A-Za-z]+$"  required>
+        </div> {% endcomment %}
+        
+        
+        <div class="inputf">
+            <i class="fa-solid fa-envelope"></i>
+       
+        <input  type="email"   placeholder="Email" name="email" required >
+        
+        </div>
+        
+
+        <div class="inputf" >
+            <i class="fa-solid fa-location-dot"  ></i>
+            <select  id="loc"  name="location">
+                <option value="" style="display: none;"></option>
+                <option value="kundapura">kundapura</option>
+                <option value="byndoor">byndoor</option>
+                <option value="shiroor">shiroor</option>
+                <option value="banglore">banglore</option>
+
+            </select>
+        </div>
+       
+        
+        
+        <div class="inputf pass">
+            <i class="fa-solid fa-lock"></i> 
+            <div>
+        <input  type="password" id="pass" value="" placeholder="Password" required  title="Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:"  name="pass1" ><i class="fa-solid fa-eye-slash" onclick="show()"></i>
+            </div>
+        </div>
+        
+        
+        <div class="inputf pass">
+            <i class="fa-solid fa-lock"></i>
+            <div>
+        <input  type="password" id="pass1" value="" placeholder="Confirm password" required title="Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:" name="pass2" onclick=validatePassword()><i class="fa-solid fa-eye-slash" onclick="show1()"></i>
+            </div>
+        </div>
+        </div>
+        
+
+        <input class="sub" type="submit" value= " Submit" >
+        <br>
+    <br>
+    <br>
+        <span class="spa1">Return to home page ?<a href="{% url 'home' %}" style="text-decoration: none;color: black;"> Home</a> </span>
+    
+        
+    
+        <br>
+        <img src="/static/img/logo.png" alt="" width="280" height="150" class="img">
+        <br>
+        <span class="txt1">LogWay</span>
+
+    </form>
+ 
+</div>
+<script>
+    function ani(){
+    var a=document.getElementById('box');
+    a.classList.add("ani");
+    
+    a.classList.add("box1");}
+
+    function show()
+    {
+        a=document.getElementById("pass")
+        if(a.type=="password")
+        {
+            a.type="text";
+        }
+        else
+        {
+            a.type="password";
+        }
+    }
+
+    function show1()
+    {
+        a=document.getElementById("pass1")
+        if(a.type=="password")
+        {
+            a.type="text";
+        }
+        else
+        {
+            a.type="password";
+        }
+    }
+
+
+    function validatePassword() {
+        var p = document.getElementById('pass').value,
+            errors = [];
+        if (p.length < 8) {
+            errors.push("Your password must be at least 8 characters");
+             
+        }
+        if (p.search(/[a-z]/i) < 0) {
+            errors.push("Your password must contain lowercase letters.");
+            
+        }
+        if (p.search(/[A-Z]/) < 0) {
+          errors.push("Your password must contain uppercase letters.");
+          
+      }
+        if (p.search(/[0-9]/) < 0) {
+            errors.push("Your password must contain at least one digit.");
+            
+        }
+        if (p.search(/[!@#$%^&*]/) < 0) {
+          errors.push("Your password must contain special characters.");
+          
+      }
+        
+        if (errors.length > 0) {
+            alert(errors.join("\n"));
+            return false;
+        }
+        return true;
+    }
+
+</script>
+
+</body>
+</html>

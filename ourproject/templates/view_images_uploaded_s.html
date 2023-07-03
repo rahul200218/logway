@@ -1,0 +1,246 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/view_images_uploaded.css' %}">
+    <script src="https://kit.fontawesome.com/2f4812b960.js" crossorigin="anonymous"></script>
+    <title>view-images-uploaded</title>
+    <style>
+        body::-webkit-scrollbar {
+            display: none;
+          }
+        .messages-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999;
+        }
+
+        .custom-message {
+            position: relative;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid transparent;
+            border-radius: 0.25rem;
+            font-family: Georgia;
+        }
+
+        .custom-message-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+    
+        }
+
+        .custom-message-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            
+        }
+
+        .custom-message .close {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            color: inherit;
+            opacity: 0.5;
+        }
+
+        .custom-message .close:hover {
+            opacity: 1;
+        }
+    </style>
+
+
+
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-head">
+            <span class="logway">
+                LogWay
+            </span>
+        </div>
+           
+            <ul class="navlist">
+                <div class="list-link">
+                    <a href="{% url 'home' %}" class="link">Home</a>
+                    <a href="{% url 'home'%}#About " class="link">About</a>
+                    <a href="{% url 'home'%}#Service" class="link">Service</a>
+                    <a href="{% url 'home'%}#Contact" class="link">Contact</a>
+                 
+                  <div class="photo">
+                    {% if request.user.profile %}
+                    <a href="{% url 'profile' %}">
+                  <img src="{{ request.user.profile.url }}" alt="no image" class="user-photo" > </a>
+                  {% else %}
+                  <a href="{% url 'profile' %}">
+                  <img src="/static/img/user1.png" alt=" " class="user-photo" href="{% url 'profile' %}"> </a>
+                  {% endif %}
+                </div>
+                </div>
+               
+            <div class="navbutton">
+                
+                <i class="fa-solid fa-bars" id="divicon"></i>
+            
+                
+            </div>
+            <div class="menu">
+                <ul class="menu-ul">
+                    <li class="menu-li"><i class="fa-solid fa-house menus" ></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-user menus"></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-briefcase menus"></i></li>
+                    <li class="menu-li"><i class="fa-solid fa-phone menus"></i></li>
+                </ul>
+                <ul class="menu-name">
+                    <li class="menu-name-link" ><a href="{% url 'home' %}">Home</a></li>
+                    <li class="menu-name-link" > <a href="{% url 'home'%}#About">About</a> </li>
+                    <li class="menu-name-link"><a href="{% url 'home'%}#Service">Service</a></li>
+                    <li class="menu-name-link"><a href="{% url 'home'%}#Contact">Contact</a></li>
+                </ul>
+                <i class="fa-solid fa-xmark cross" id="close"></i>
+            </div>
+        
+        </nav>
+                
+        <div class="messages-container">
+            {% for message in messages %}
+        {% if message.tags == 'success' %}
+        <div class="custom-message custom-message-success">
+            <span>{{message}}</span>
+            <button class="close" onclick="closeMessage(this)">&times;</button>
+        </div>
+        {% elif message.tags == 'error' %}
+        <div class="custom-message custom-message-danger">
+            <span>{{ message}}</span>
+            <button class="close" onclick="closeMessage(this)">&times;</button>
+        </div>
+        {% endif %}
+    {% endfor %}
+        </div>     
+    </header>
+    <main class="main-class">
+        <div class="details">
+        <div class="image-div">
+            {% if request.user.is_staff %}
+            <img src="{{ courier.image.url }}" alt="">
+             <h2>{{ courier.courier.courier_id}}</h2>
+        </div>
+       
+       <table>
+        <tr>
+            <td>Sender</td>
+            <td>:</td>
+            <td>{{ courier.sent_by_user}}</td>
+        </tr>
+        <tr>
+            <td>Received by</td>
+            <td>:</td>
+            <td>{{ courier.uploaded_by }}</td>
+        </tr>
+        <tr>
+            <td>Received at</td>
+            <td>:</td>
+            <td>{{ courier.uploaded_at }}</td>
+        </tr>
+        {% comment %} <tr>
+            <td>Payment</td>
+            <td>:</td>
+            <td>Successful</td>
+        </tr> {% endcomment %}
+        <tr>
+            <td>Final staff</td>
+            <td>:</td>
+            {% if courier.courier.destination_received_by %}
+            <td>{{ courier.courier.destination_received_by }}</td>
+            {% else %}
+            <td>None</td>
+            {% endif %}
+           
+        </tr>
+        <tr>
+            <td>Destination address  </td>
+            <td>:</td>
+            <td>{{ courier.courier.destination_address  }}</td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td>:</td>
+            <td>{{ courier.price }}</td>
+        </tr>
+        <tr>
+            <td>Payment</td>
+            <td>:</td>
+            {% if courier.courier.payment  %}
+                <td> Successful</td>
+                {% else %}
+                <td> Pending
+                </td>
+            {% endif %}
+        </tr>
+       </table>
+       
+       {% endif %}
+
+
+
+
+
+    </div>
+    </main>
+    <footer class="footer">
+        <div class="foot-page">
+            <span class="foot-log">LogWay</span>
+
+           
+                <ul class="footer-list">
+                    <li class="foot-link"><a href="{% url 'home'%}#Service"> Service</a> </li>
+                    <li class="foot-link"><a href="{% url 'home'%}#Contact" > Contact</a> </li>
+                    <li class="foot-link"><a href="{% url 'home'%}#About" > About</a> </li>
+                </ul>
+                <div class="foot-icon">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-facebook"></i>
+                   
+            </div>
+            <div class="copy-right">
+                <p class="foot-copy">&copy;  LogWay. All right reserved</p>
+            </div>
+            <div class="foot-up" >
+                <a href="#top">    <i class="fa-sharp fa-solid fa-arrow-up"></i> </a>
+         
+            </div>
+        </div>
+
+   </footer>
+</body>
+<script>
+   
+       document.getElementById("divicon").addEventListener('click',displaymenu);
+function displaymenu()
+{
+    var a=document.getElementsByClassName('menu');
+    a[0].style.height = "150px";
+    a[0].style.boxShadow="rgba(0,0,0,0.45) 25px 25px 25px 25px";
+
+}
+
+document.getElementById("close").addEventListener('click',closemenu);
+function closemenu()
+{
+    var a=document.getElementsByClassName('menu');
+    a[0].style.height = "0px";
+    a[0].style.boxShadow="rgba(0,0,0,0.45) 0px 0px 0px 0px";
+}
+function closeMessage(element) {
+    var message = element.parentNode;
+    message.parentNode.removeChild(message);
+}
+</script>
+</html>
