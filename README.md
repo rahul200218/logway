@@ -1,2 +1,2 @@
 # logway
-College projrct
+College project
